@@ -1,0 +1,23 @@
+Data is a priority during migration, this is because today data is usually loosely coupled to applications
+Data is the foundation of the enterprise
+
+Data Selection is critical
+- Security Issues
+- Compliance Issues
+- Performance Issues
+
+Understand everything about the data and ability to manage it correctly.
+
+Goal of leveraging data:
+- Lower OPeration Costs -> Integration of Existing Data Silos -> Influencing Actions and Outcomes
+
+Special Considerations for Data:
+- Deal with compliance and security issues
+- Deal with which applications are bound to which data stores
+- Deal with data owners
+- Deal with data that will exist on premise and in the cloud 
+
+Build a solid Architetural Foundation
+- Avoid duplicate data and data silos, redundancy, inaccuracy, among other issues
+- Employ policies and governance to avoid cloud sprawl (Controlling how it's accessed)
+- Improve integration and access-friendly ratings 

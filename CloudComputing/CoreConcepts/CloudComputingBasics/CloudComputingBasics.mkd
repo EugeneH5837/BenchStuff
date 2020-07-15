@@ -1,0 +1,13 @@
+Private Cloud - Using your own hardware that the cloud runs on
+Pros: Better security
+Cons: Space/money cost of using your own hardware and software 
+
+Public Cloud - Cloud that runs over the open internet, may not know where hardware physically exists
+Pros: Don't have to purchase hardware/software, don't have to supply data center space
+Cons; Can be considered less secure
+
+Hybrid Cloud - Can provide best of both private/public
+
+
+Choosing type of cloud depends on matching your workload to cloud characteristics
+

@@ -1,0 +1,59 @@
+**Cloud are basically complex distributed systems**
+- Look at your own requiremetns
+- Most effective security is proactivity
+
+Cloud Secuirty Maturity - Risk and Agility 
+- Basics
+  - Reactive
+  - Point Products
+- Layered Tools
+  - Help people react faster
+- Integreated Tools
+  - Correlation
+  - Situational Context
+  - Common Management
+- Proactive
+  - Threat and business risk context
+  - Help identifty and remediate risks
+  - Automated responses
+- Predictive
+  - Advanced analytics to identify potentional attacks via patterns and external data
+
+Securtiy Governance Domains
+- Application and interface security
+- Audit and asusrance
+- Business continuity and operations
+- Change control
+- Data security and information LCM
+- Encryption and key management
+- Governance and risk
+- Human resources
+- Identity and acecss management
+- Infrastructure and virtualization
+- Interop and portability
+- Mobile
+- Security incident management
+
+The ability to define secuirty related processes but do so at a business level without assigning to technology
+
+Technology domain - operating, maintaining, and extending security technology
+- Security architecture
+- Security infrastructure
+- Technology policy
+- Technology standards: Tools, technologoies, protocols
+- Data strategy: Management, flows, synchronization, strucutres
+- Technical scope
+- Technical functionality
+- Technical requirements
+- Translation business logic into progammatic logic: Conditions, configurations, schemas
+- Technology process definition
+- Security operations
+
+Three stages of assessing a security solution
+- **Discovery**
+  - Gather information from all relevant areas to start to form a picture
+- **Assesment**
+  - Analyze data gathered from discovery phase to uncover issues
+- **Recommendations**
+  - Based on the assesment, what needs to be done?
+

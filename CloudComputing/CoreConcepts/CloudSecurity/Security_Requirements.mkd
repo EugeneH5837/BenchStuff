@@ -1,0 +1,22 @@
+Centralize 
+1. Fewer doors left open
+   1. Policies
+   2. Access Controls
+   3. APIs
+   4. Repositories
+   5. Central logs
+   6. Integrated Monitoring
+   7. Single Pane of glass
+2. Consistency across systems
+   1. Industry standards
+   2. Encryption strategy, data in flight, etc.
+   3. Common tool chain, using same tool sets
+   4. Standard OSS/BSS (Operational support systems, Business support systems)
+   5. Shared security services
+3. Eliminate Human Errors
+   1. Blueprints
+   2. Patching, how we'll patch software that could lead to vulnerabilities
+   3. Scanning, scan environments
+   4. Event Management, how to deal with hacking events
+   5. One-touch deploys
+   6. Automated metadata tagging

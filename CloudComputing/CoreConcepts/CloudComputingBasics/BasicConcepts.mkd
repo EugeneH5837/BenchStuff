@@ -1,0 +1,9 @@
+3 major cloud types 
+
+SaaS (Software as a service) - finished application you rent and customize ie Web Browser, Salesforce
+IaaS (Infrastructure as a service) - Deployment platform that abstracts the infrastructure ie Data Centers, AWS
+PaaS (Platform as a service) - Deployment platform that sbtracts the infrastructure ie Deployment, Google App Engine
+
+IaaS value - cheaper platofrm for applications and data
+SaaS value - cheaper way to consume enterprise applications such as CRM and ERP
+PaaS value - cheaper way to build web-based systems that force standards

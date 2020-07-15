@@ -1,0 +1,18 @@
+Monitoring and Measurement Practice
+- Monitor workloads and components
+- Provides performance metrics
+- Moves typical on-premises services to cloud providers
+- Shows performance response to increasing and decreasing workloads
+
+Foundations of monitoring and operations
+Governance -> Performance -> Security -> Cost -> Health -> Reporting
+
+Portability - Leveraging hybrid cloud sas private and public cloud platform provides effective portability
+Available through technologies such as containers, serverless technology, and kubernetes
+
+Provide Operational Helath - Core to all of this is to provide the holistic collection of data that determines bot the operational health 
+of all systems, cloud or not, holisitically, as well as targeted performance metrics.
+
+Maintain operational Control
+Moving to hybrid clouds from traditional on-premises systems does not mean giving up control of all operations
+Monitoring and management of cloud-based production is often an afterthought

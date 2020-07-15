@@ -1,0 +1,51 @@
+**The Stack**
+- Can be many stacks in an application
+- Each thread has its own stack
+- Managed by the JVM, knows when data on stack can be destroyed
+- Functions like the stack data strcuture but when objects are created, then for 
+  example when a method is finished, java knows to pop these objects off the stack as they 
+  are no longer needed
+- Used for local primitive variables like int, doubles
+  
+**The Heap**
+- All of the memory in application except for data in stacks
+- Heap allows for easier passing around of objects
+- All objects are stored on the heap
+- Objects in heap will have pointer to them
+- Variable is created on stack that points to object that's on the heap
+
+
+**Java Memory - Rules**
+- OBjecst are stored on the heap
+- Variables are a reference to the object
+- Local variables are stored on the stack
+- Primatives live entirely on the stack
+
+Example: 
+```java
+  public static void main(String[]){
+    List<String> myList = new ArrayList<>();
+    myList.add("One");
+    myList.add("Two");
+    myList.add("Three");  
+    printList(myList);
+  }
+
+  public static void printList(List<String> data){
+    String value = data.get(1);
+    data.add("Four");
+    System.out.println(data);
+  }
+
+```
+
+| Stack                           |                             Heap |
+| :------------------------------ | -------------------------------: |
+| value (points to String two)    |
+| data                            |
+| myList (points to List in heap) |                             List |
+|                                 |   List Element 0 -> String (One) |
+|                                 |   List Element 1 -> String (Two) |
+|                                 | List Element 2 -> String (Three) |
+
+Then as method ends, top two values from method references are popped off of the stack

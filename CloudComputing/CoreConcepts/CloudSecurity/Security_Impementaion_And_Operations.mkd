@@ -1,0 +1,11 @@
+Operations is where security can fail, focus on monitoring
+
+Security Operations
+- Requries transparceny
+- Data available everywhere for monitoring data security
+- Proactive, not reactive
+- Mine for patterns
+- Evaluate Key Performance Indicators and Service Level Agreements
+- Fast Feedback loops, real-time data and better learning
+
+Security Stnadards, need to know which ones apply to you

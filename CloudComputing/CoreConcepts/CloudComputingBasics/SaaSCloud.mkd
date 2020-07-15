@@ -1,0 +1,19 @@
+**Sales as a Service**
+
+Save on expensive CRM (Customer relationship management) and 
+ERP (enterprise resource planning) software
+
+SaaS - removes the need for organizations to install and run hardware/software within their 
+own data centers, and eliminate the waves of hardware and software acquisitions, as well as 
+provisioning and maintenance, and software licensing.
+
+Why SaaS clouds?
+- No need to spend a large amount of cash on software and hardware
+- Unlimited scalability for growing enterprises
+- Continuing automatic updates
+- Supports both desktop and mobile computing
+
+Examples of proivders:
+- Salesforce (CRM)
+- Google Apps for Work (Automation on demand)
+- Microsoft 365 (SaaS of MS Office)

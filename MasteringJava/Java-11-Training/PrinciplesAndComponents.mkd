@@ -1,0 +1,43 @@
+- [Principles](#principles)
+- [Memory Management](#memory-management)
+
+# Principles
+
+**Principles of Java**
+- Simple, Object-oriented, and familiar
+- Robust and secure
+- Archtecture netutral and portable (build once deploy many)
+- High performance
+- Interpreted, supports multi-threading, dynamic (Interpreted at runtime instead of machine code)
+
+**Runtime Architecture**
+- Interpreted Language
+- Compiles to bytecode instead of machine language, so can be loaded on to any machine that has JVM
+- Applications arep ortable between platforms withouth recompiling
+
+Layering
+**Application Bytecode**
+**Core runtime and additional libraries**
+**Java virtual machine**
+**Operating System**
+
+# Memory Management
+
+**Automatic Memory Management**
+- Memory for objects is allocated automatically
+- Local variables and function calls are stored in stack
+- Object and member variables are stored in heap
+- Objects are retained in memory until dereferenced
+- Object is eligable for collection when all references expire
+
+**Java Garbage Collector**
+- Allocates and deallocates memory
+- Can destroy dereferenced objects, but not required0
+- Garbage collection is managed by the VM
+- You cannot force garbage collection
+
+**Tips for Managing Memory**
+- Minimize the number of objects you create
+- System methods that report memory usage
+  - Runtime.maxMemory()
+  - RunTime.totalMemory()

@@ -1,0 +1,24 @@
+CloudOps can focus too much on tools and tech and not enough on the processes
+
+CloudOps Tools
+- Redundancy
+- Restart systems automatically
+- Self-heealing systems
+- These tools are provided by cloud provider
+
+Metrics and Monitoring Systems Tools
+- More data driven
+- Ability to spot trends
+
+CloudOps Beyond Tools
+- Training
+- Processes
+- Procedures
+- Best practices
+
+Place Components into Domains
+Examples:
+Data: Abstraction, Data hygiene, Active metadata management, Data ops
+Services: Abstraction, aggregation, governance, Complex services in domains, Services ops
+Processess: Meta processes, Complex processes in domains, Processes ops
+Cognitive: Common learning framework, knowledge integration, Cognitive ops

@@ -1,0 +1,50 @@
+
+- Cloud providers are all different in features and functions
+- Need to look at your own requirements and then look at all candidates
+- If you make a mistake, try again
+
+Elasticity and Scalability
+- Flexibile resource configurations
+- Dynamic scale-upo/scale-down of resources
+- Seamless support of multiple clouds
+- Flexible resource quotas
+
+Control
+- Role-based acess controls
+- Comprehensive monitoring and logging
+- Image lifecycle management
+- Integration into incidnet, change, and patching management
+
+Productivity
+- Common Self - Service provisioning portal into all cloud end points
+- Robust service catalog meets all of customer's cloud needs
+- End-to-end automation
+- Supported APIs allowing the applications an data sources to communicate with one another
+
+Agility
+- Self-service resourcep rovision
+- Rapid elasticity
+- Capacity on demand insures resources are always available
+- Rapid disaster recory - Active-active application support, run application in redundant state so it's never down
+- Seamless support for different endpoints
+
+Cost
+- Metering and chargeback, who is incurring what cost and how it's billed interanlly
+- Pay as you go
+- Consumption based
+- Reliable asset tracking and usage reporting
+
+Cloud Provider Analysis example
+| Disruption Vectors | Relative Importance to Client |
+| :----------------- | ----------------------------: |
+| Storage            |                           15% |
+| Provisionging      |                           15% |
+| Management         |                           15% |
+| Governance         |                           15% |
+| Network            |                           10% |
+| Compute            |                           15% |
+| Security           |                           15% |
+| Total              |                          100% |
+
+Then make chart against providers to see which proves best
+

@@ -1,0 +1,23 @@
+Advice
+- Splurge on training
+- Hire outside consultants for the first project
+- Always evaluate the market costs for talent
+
+Cloud Architects - Know how to design, build, and deploy cloud based applications and architecture. Breadth of experience and skills.
+Cloud Developrs - Build cloud native systems on cloud providers (AWS, GCP, Azure, etc.), figure out how to build applications as effeciently as possible on cloud provider
+Cloud Security Engineers - Know how cloud security works, how it works with existing and new applications
+
+Cloud Architects
+- Understand cloud holistically
+- Understan the process of application migration
+- Good understanding of cloud providers
+
+Cloud Developers
+- Dunerstand how to build applications on speific clouds
+- Understand how to leverage cloud native features
+
+Cloud Security Engineers
+- Understand how to design security solutions for the cloud
+- Understand the security tools and technologies that are available
+
+Adaptable Organization Strucutres

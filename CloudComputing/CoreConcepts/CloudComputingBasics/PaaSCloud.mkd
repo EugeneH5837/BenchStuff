@@ -1,0 +1,23 @@
+**Platform as a Service**
+
+Reduce application development and deployment cost
+
+PaaS - provides a platform allowing users to develop, run, and manage applications without the complexitry of building and maintaining 
+the infrastructure themselves.
+
+Why PaaS Clouds?
+- Provides complete development, testing, and deployment platforms
+- Reduces the complexity of development and testing by placing the developer in a limited environemnt
+- Supported by most IaaS cloud provides including AWS, Azure, and GCP. 
+
+Providers:
+- AWS's Elastic Beanstalk
+- Microsoft Azure
+- Google App Engine
+
+Trend is integration and combination of IaaS and PaaS
+
+PaaS Business Case - Reduces development and deployment complexity and increase developer productivity.
+Provide abstraction from the underlying complexities of the development environment and without these complexities,
+developers should be more productive. Since you are not maintaining your own development environement, things 
+may happen quicker since developers won't need to update and debug their development platform.

@@ -1,0 +1,5 @@
+IaaS Use Case (AWS EC2)
+- Launch AWS EC2 instance
+- Configure your instance
+- Connect to instance
+

@@ -1,0 +1,17 @@
+1. Test your tools
+2. Never assume things will work
+
+Leverage learning from phase 1 to align client to cloud security best practices
+Provide recommendations for remediation and preparation of final deliverables
+
+Platform Security - encryption, IAM, compliance, etc.
+Need to work for public clouds, private clouds, and traditional
+
+Best Practices
+- Security Systems avilability and responsiveness should be considered top priority, benchmark tools
+- Degree of compliance with deployed technical standards, laws, etc.
+- Degree of compliance with deployed business policies, laws need to adhere to from a business point of view
+- Number of application groups/develops trained on security tools
+- Percent of systems/applications utilizing security services
+- Completeness of system documentation
+- Improvement in ability to enforce security and privacy policies

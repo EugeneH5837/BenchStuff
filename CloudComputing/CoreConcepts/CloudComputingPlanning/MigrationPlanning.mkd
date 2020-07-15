@@ -1,0 +1,26 @@
+Migration planning must be detailed out ahead of time
+ - Provide plan with major steps
+If you don't have a plan you will not be as effective as those who do.
+Make sure to learn as you go, most it will be the first time moving to cloud.
+
+Working with On-Premises Applications
+- Replace
+- Reuse: Use in part of a bigger system
+- Refactor: Changing portions of application, typically done to leverage something in the cloud service
+- Replatform: Ex is Linx -> Windows, etc.
+- Rehost: Lifting and shifting
+- Retain: Some applications aren't cost-effective to move to cloud
+- Retire: Find applications that aren't being used or providing value and taking them off the platform
+
+Estimated Application Migration Resource Levels
+- Number of FTEs increase over time to maintain, improve, migrate into cloud, etc.
+
+Relative Investment and Value Over Time
+- The more you invest the most cumulative value should increase over time
+- Increasing revenue, innovation, making business more valuable.
+
+Migration Plan:
+- Determine Business Drivers
+- Understand Data, services, business processes, and system integration points
+- Determine an integration strategy for interanl and external systems
+- Outline a migration path for legacy systems to the new architecture (How we're going to do it, processes to leverage)

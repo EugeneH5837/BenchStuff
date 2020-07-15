@@ -1,0 +1,33 @@
+1. Think Small - select only the workloads that will likely show success.
+2. Think Simple - Don't boil the ocean, pick the easiest applications first, port, build, and move sucessfully and simply
+3. Budget for Mistakes - Make sure you allow enough time for errors
+
+- Get aproval from stakeholds
+- Make sure you are well funded
+- Never be afraid to fail
+
+Get to Work
+Cloud Strategy and Readiness
+- Business model disruption
+- Cloud strategy and operation model
+- Cloud economics
+- Organization alignment and readniness
+- Cyber risk assessment
+- Cloud suitability and planning
+
+Cloud Migration
+- Cloud migration services
+- Cloud platform engineering and implementation
+- Cloud transition and integration management
+- Application modernization
+- Cyber risk transformation
+
+Cloud Enabled Solutions
+- API management and integration
+- Software-defined data center and networking
+- DevOps
+- DevSecOps
+
+Cloud Managed Services
+- Managed risk services
+- BPaaS services

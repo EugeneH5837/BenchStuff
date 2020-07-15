@@ -1,0 +1,16 @@
+Basics - reactive and points products
+Layered tools - Help people react faster
+Integrated Tools - Correlation, Situational context, Common Management
+Proactive - Threat and business risk context, help identify and remediate risks, automated responses
+Predictive - Advanced analytics to identify potentional attacks using patterns and external data
+
+Minimum Viable Security starts at Integrated Tools
+
+1. Deal with the basics
+   1. At least the minimum viable security is needed.
+2. Be Proactive
+   1. Success is dependent on your ability to monitor, react, and anticipate.
+
+Drive standardization needed to achieve businesses benefits while encouraging adaptability, flexibility, and innovation.
+Provide clarity in security policies, standards, processes, roles, and accountabilities
+Cloud Security - Meaure and communicate results, drive continual improvement, build existing capabilities

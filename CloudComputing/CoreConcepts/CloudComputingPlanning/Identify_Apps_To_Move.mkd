@@ -1,0 +1,12 @@
+Workload and Applications to Migrate
+- Thinking and planning strategically
+- Rapidly iterating through feedback loops
+- Automating, measuring, and continuously improving
+- Scaling at an accelerated pace
+
+Busines case funding - What it's worth to the business (cost saving, agile, etc.)
+Breadth analysis - Looking at the applications (general consensus of moving to cloud)
+Modernization - What needs to be updated? 
+
+Steps of Cloud Migration
+Business Case -> Requirements -> Migration -> Testing -> Deployment - > Operate (DevOps) -> Improve

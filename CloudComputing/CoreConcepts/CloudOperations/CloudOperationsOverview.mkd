@@ -1,0 +1,26 @@
+CloudOps means continuous improvement
+CloudOps goes beyond simple operations
+
+CloudOps
+- Provides more advanced properties to public cloud-based platforms
+- CloudOps provides condintuous operations, have zero downtime, improve products
+- Software must be updated and placed into production with out interruption of services
+
+Focus on Zero Downtime best practices
+- Redundnacy is core to all good cloud operations
+
+Moving users to the cloud
+- Users demand no outages
+- Cloud is sold as more reliable and more scalable
+
+Strive for continuous Improvement
+Each domain works as part of an interconnected system
+- Data Domain
+- Services Domain
+- Processes Domain
+- Cognitive Domain
+- Security Domain
+- Governance Domain
+- Automation Domain
+
+Think about how to componentize into domains

@@ -1,0 +1,58 @@
+**Total Cost of Ownership**
+
+Almost all organizations ask for TCO and ROI (return on investment).
+Solid business case need to exist before migration can begin.
+These are value metrics you will be measured against.
+
+TCO or ROI
+Pure TCO: 
+- Cost calculations: cost 1st year, second year, etc. 
+- Metrics to measure cost. 
+- How does that differ moving to cloud vs on prem
+
+Transitional Costs: 
+- What will cost to get from on prem to cloud. 
+- Needs to have business case
+- When does money come back
+
+Return on Investment:
+- Full program Costs vs Value Calculations
+- After everything has been ironed out like refactoring costs, governance changes, security, etc.
+- Looking at costs are vs your value metrics that are to be determined
+- Produce set of metrics/predictions for use of cloud
+
+Value Realization:
+Will differ based on type of business
+
+| Weight |                Value |
+| :----- | -------------------: |
+| 92/100 |      Improve Agility |
+| 83/100 | Improve Productivity |
+| 78/100 |  Improve Scalability |
+| 76/100 |     Increase Revenue |
+| 56/100 |        Decrease Cost |
+
+Reasons and value of these things will vary business to business based on their goal and what the cloud can do to utilize these goals they have
+
+Things to do
+- Current State Assesment
+  - Application inventory estate-level assesment
+    - Sample application assesment
+    - Full estate inventory
+    - Application migration approach
+  - Service levels and operational environemtn assesment
+    - Curreent infrastructure and operational costs
+    - Current state architecture qualities and requirements
+    - Availability, security, compliance, scale, performance, resiliency
+    - Current state operational models and processes
+    - 
+- Future State Architecture
+- TCO Model
+- Business Benefits/ROI
+
+Top Five TCo/ROI Overlooked areas
+- Value of agility, some people don't consider it as valueable of an asset that it really is
+- Costs to retire selected applications, infrastructure, or data centers. Tax issues around stopping using hardware/software, etc.
+- Changes required to maintain service levels. What needs to change to move everything to cloud with services being used by cloud provider
+- Software Costs, how much software will cost to run on prem vs in cloud
+- Organizational transformation costs, cost to change personnel, location, etc.

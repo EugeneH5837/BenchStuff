@@ -1,0 +1,29 @@
+**Infrastructure as a Service**
+
+- Not all the same
+- Understand capabilities of each one 
+- Likely to be vital so need to carefully consider requierments 
+
+A third party provider hosts hardware, software, service, storage, and other infrastructure on behalf of the end user.
+Can be used for any service.
+
+Why IaaS?
+- Found in traditional data cneter
+- PRovide application and data hosting for existing enterprise workloads 
+- Fastest growing type
+- Can be public, private, or hybrid
+
+Includes:
+- AWS
+- Microsoft Azure
+- Google Cloud PLatform
+
+Characteristics:
+- Main value of IaaS is avoid buying hardware and software
+- Only pay for the services you use
+- Elastic scaling (up or back based on workload)
+
+Value:
+- Shifting risk to the IaaS public cloud provider
+- Take care of initial hardware/software
+

@@ -1,0 +1,11 @@
+Type of storage really depends on the use case
+
+Cloud block storage like AWS Elastic Block Store provides a virtualized storage area network with logical
+volume management provisioning via a simplified web services interface.
+Once instances of storage are launched, storage can be added/removed.
+
+Use Cases:
+- Databases
+- Email Services
+- RAID
+- VMs
