@@ -28,7 +28,9 @@ Cloud Componenets
 - Networking
 
 Iaas: Lowest Level provided (Servers, Load Balancers, etc) customer manages the rest
+
 PaaS: Additionally provides Runtime And OS, customer still manages application data and data
+
 SaaS: Provides everything, including application itself
 
 AWS provides all 3
