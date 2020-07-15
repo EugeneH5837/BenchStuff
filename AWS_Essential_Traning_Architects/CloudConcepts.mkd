@@ -60,23 +60,31 @@ Also allows for **proactive scaling**, scale out to meet anticipated demand
 **Scalable Architecutre** - One of the key benefits to the cloud, and why elastic is used to describe cloud services. Can scale out, in, up, or down.
 
 Scaling out - Horizontal scaling, capacity is added to system with nodes or things like web servers for an application
-Scaling in - Horizontal scaling, opposite of scaling out. Capacity is remvoed by decreasing number of components/nodes
+
+Scaling in - Horizontal scaling, opposite of scaling out. Capacity is removed by decreasing number of components/nodes
+
 Scaling up - Vertical scaling, resources are added to a single component or node to allow it to handle more load. Ie increase memory of db or adding more CPUs of a web server
+
 Scaling down - Vertical scaling, opposite, reducing processing capacity or decreasing memory of a server
 
 Fixed Capacity requres much more planning or timing in order to make adjustments
+
 Can run into situations where not enough capacity, too much, due to variable loads
 
 # 4. Cloud Constraints
 When mapping an existing system to cloud specifications and sometimes it won't match.
+
 Cloud provides building blocks with scalability in mind. 
+
 Example is if there is a cloud server type that does not have the amount of RAM being used by an existing system's single server, can re-think the architecture and 
 distribute it across different services. This is typically due to the existing system not being built with scalability in mind, so an architect must think of how to make it 
 scalable.
 
 # 5. Cloud Administration
 Administering is now programmable, they must do so using abstract cloud resources, need to be more aware of applications running on the infrastructure
+
 DBAs' role changes by using web-base console to change DB capacity when needed. 
+
 Need to be aware of using VM images for deployment, embrace new ideas to support highly available, and highly reliable data tiers such as:
 - Geographical redundancy
 - Asynchronous replication
