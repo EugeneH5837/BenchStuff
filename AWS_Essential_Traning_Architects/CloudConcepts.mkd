@@ -14,7 +14,7 @@
 - PaaS
 - SaaS
 
-Cloud Componenets
+Cloud Components
 
 - Application Data
 - Data
@@ -54,12 +54,12 @@ Also allows for **proactive scaling**, scale out to meet anticipated demand
 **Improved Development Lifecycle**
 - Can be readily cloned to production -> development -> test environments
 
-**HA and Disaster Recovery Beneifts**
+**HA and Disaster Recovery Benefits**
 - Helps increase speed and performance by choosing data warehouses closest
 - Also allows you to host, distribute and recovery across different geographic location
 
 # 3. Cloud Elasticity
-**Scalable Architecutre** - One of the key benefits to the cloud, and why elastic is used to describe cloud services. Can scale out, in, up, or down.
+**Scalable Architecture** - One of the key benefits to the cloud, and why elastic is used to describe cloud services. Can scale out, in, up, or down.
 
 Scaling out - Horizontal scaling, capacity is added to system with nodes or things like web servers for an application
 
@@ -69,7 +69,7 @@ Scaling up - Vertical scaling, resources are added to a single component or node
 
 Scaling down - Vertical scaling, opposite, reducing processing capacity or decreasing memory of a server
 
-Fixed Capacity requres much more planning or timing in order to make adjustments
+Fixed Capacity requires much more planning or timing in order to make adjustments
 
 Can run into situations where not enough capacity, too much, due to variable loads
 
@@ -90,4 +90,4 @@ DBAs' role changes by using web-base console to change DB capacity when needed.
 Need to be aware of using VM images for deployment, embrace new ideas to support highly available, and highly reliable data tiers such as:
 - Geographical redundancy
 - Asynchronous replication
-- Different data storage options beyond traditional relational database systems, could re-think architecture by taking advantage of horization partitioning
+- Different data storage options beyond traditional relational database systems, could re-think architecture by taking advantage of horizontal partitioning

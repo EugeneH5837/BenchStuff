@@ -1,6 +1,33 @@
 [1. Design For Failure](#design-for-failure)
 
 # Design For Failure
-Failure should be expected within the individual components of a sytem, should be architected to prevent application failure
+Failure should be expected within the individual components of a system, should be architected to prevent application failure
 
-Thinkig about fai
+Thinking about failure during design process, which will lend itself to a better, more stable product
+
+Strive to avoid **single** points of failure
+
+Example: Web application where web server and DB are on same single instance. Not designed for failure because if anything 
+happens to single instance, entire application fails
+
+Fix: Move DB to its own instance, separates it from the web server. Architecture allows for introduction of load balances, which allows
+for scaling of web servers. Can tolerate web server failure without system wide failure. But now DB and load balancer introduce 
+more single points of failure. To remove single points of failure it is done by 
+
+Customer -> Internet -> Elastic Load balancing ->>> Multiple Web servers -> Amazon RDS (Master) -> Amazon RDS (Alternative, on standby)
+
+Elastic load balancing takes care of redundancy and scales automatically. With Amazon RDS, it is easy to set up redundancy and failover.
+
+There is now no single point of failure. 
+
+# Implement Elasticity
+Refers to the ability of cloud to scale resources to demand, typically done with a few methods:
+- Regular fixed basis like hourly, daily, or weekly. Works if application has highly predictable traffic times.
+- Scale components in anticipation of events, scale up or out due to some marketing campaign.
+- Monitoring with metrics and scaling based on metrics at certain thresholds like spikes CPU utilization and network I/O
+
+To take full advantage of scaling: 
+- Application deployment processes need to be automated
+- System configuration adjustment to accommodate scaling
+- AWS has deployment services/tools to make processes straightforward (AKA Bootstrapping - self-sustaining start-up process) in AWS this is getting a process up and running on an EC2 instance
+- As an architect, the application must be designed to take advantage of elasticity.
