@@ -1,12 +1,12 @@
-[Cloud Services](#1-cloud-services)
+[1. Cloud Services](#1-cloud-services)
 
-[Cloud Benefits](#2-cloud-benefits)
+[2. Cloud Benefits](#2-cloud-benefits)
 
-[Cloud Elasticity](#3-cloud-elasticity)
+[3. Cloud Elasticity](#3-cloud-elasticity)
 
-[Cloud Constraints](#4-cloud-constraints)
+[4. Cloud Constraints](#4-cloud-constraints)
 
-[Cloud Administration](#5-cloud-administration)
+[5. Cloud Administration](#5-cloud-administration)
 
 
 # 1. Cloud Services
