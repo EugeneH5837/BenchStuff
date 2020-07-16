@@ -8,7 +8,7 @@
 - Can be many stacks in an application
 - Each thread has its own stack
 - Managed by the JVM, knows when data on stack can be destroyed
-- Functions like the stack data strcuture but when objects are created, then for 
+- Functions like the stack data structure but when objects are created, then for 
   example when a method is finished, java knows to pop these objects off the stack as they 
   are no longer needed
 - Used for local primitive variables like int, doubles
@@ -22,10 +22,10 @@
 
 
 # Java Memory - Rules
-- OBjecst are stored on the heap
+- Objects are stored on the heap
 - Variables are a reference to the object
 - Local variables are stored on the stack
-- Primatives live entirely on the stack
+- Primitives live entirely on the stack
 
 Example: 
 ```java

@@ -1,0 +1,303 @@
+[Escaping References](#escaping-references)
+[Example](#example)
+[Avoid escaping references with collections](#avoid-escaping-references-with-collections)
+[Avoiding escaping references with custom objects](#avoiding-escaping-references-with-custom-objects)
+[Exercise](#exercise)
+
+# Escaping References
+With a class like the following:
+```java
+public class CustomerRecords{
+    private Map<String, Customer>  records;
+
+    public CustomerRecords(){
+        this.records = new HashMap<String, Customer>();
+    }
+
+    public void addCustomer(Customer c){
+        this.records.put(c.getName(), c);
+    }
+
+    public Map<String, Customer> getCustomers(){
+        return this.records;
+    }
+}
+```
+This issue is that the method getCustomers() gives a reference to the collection and you can do anything to the collection.
+
+Can do something like:
+```java
+CustomerRecords records = new CustomerRecords();
+
+var myCustomers = records.getCustomers();
+myCustomers.clear();
+```
+This is basically declaring the collection as public, the original purpose was to iterate over the map not modify it, the method to the map has allowed it to escape when it should have been encapsulated.
+
+# Example
+References can only escape if we have methods that return a pointer to the object. Looking for ways to avoid returning points to existing objects.
+
+```java
+
+public class Customer {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public Customer(String name) {
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name;
+	}
+	
+}
+
+public class CustomerRecords implements Iterable<Customer>{ //extends iterable class now
+	private Map<String, Customer> records;
+	
+	public CustomerRecords() {
+		this.records = new HashMap<String, Customer>();
+	}
+	
+	public void addCustomer(Customer c) {
+		this.records.put(c.getName(), c);
+	}
+		
+	public Map<String, Customer> getCustomers() {
+		return new HashMap<String, Customer>(this.records); //changed here
+	}
+
+	@Override //new method to iterate
+	public Iterator<Customer> iterator(){
+			return records.values().iterator();
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		CustomerRecords records = new CustomerRecords();
+
+		records.addCustomer(new Customer("John"));
+		records.addCustomer(new Customer("Simon"));
+				
+		for (Customer next : records)
+				{
+					System.out.println(next);
+				}
+
+	}
+	
+}
+```
+
+Now since a new instance is returned, cannot mutate the existing values in the class but are still accessible and you can iterate over them.
+
+# Avoid escaping references with collections
+Better idea is to return an immutable collection like 
+
+```java
+Collections.unmodifiableMap
+Collections.unmodifiableList
+```
+
+So method should be changed to be 
+```java
+public Map<String, Customer> getCustomers() {
+	return Collections.unmodifiableMap(this.records);
+}
+```
+
+# Avoiding escaping references with custom objects
+
+```java
+public class CustomerRecords implements Iterable<Customer>{
+	private Map<String, Customer> records;
+	
+	public CustomerRecords() {
+		this.records = new HashMap<String, Customer>();
+	}
+	
+	public void addCustomer(Customer c) {
+		this.records.put(c.getName(), c);
+	}
+		
+	public Map<String, Customer> getCustomers() {
+		return new HashMap<String, Customer>(this.records);
+	}
+
+	@Override
+	public Iterator<Customer> iterator(){
+			return records.values().iterator();
+	}
+
+	public CustomerReadOnly getCustomerByName(String name){
+		return this.records.get(name); //new copied customer object
+	}
+}
+
+public class Customer implements CustomerReadOnly{
+	private String name;
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public Customer(String name) {
+		this.name = name;
+	}
+
+	public Customer(Customer oldCustomer){ //copy constructor
+		this.name = oldCustomer.name;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+}
+
+public interface CustomerReadOnly{
+	
+	public abstract String getName();
+
+	public abstract String toString();
+}
+```
+
+Now when customer object implements interface, expect CustomerReadOnly object which does not have a set method, so can't change the information of the object.
+
+# Exercise
+```java
+public class Price {
+
+	private Map<String,Double> rates;
+	private Double value;
+	
+	public Price(Double value) {
+		this.value = value;
+		rates = new HashMap<String,Double>();
+		rates.put("USD", 1d);
+		rates.put("GBP", 0.6);
+		rates.put("EUR", 0.8);
+	}
+		
+	public Double convert(String toCurrency) {
+		
+		if (toCurrency.equals("USD")) {
+			return value;
+		}
+		else {
+			Double conversion = rates.get("USD") / rates.get(toCurrency);
+			value = conversion * value;
+			return value;
+		}
+	}
+	
+	public String toString() {
+		return this.value.toString();
+	}
+	
+	public Map<String,Double> getRates() {
+		return rates;
+	}
+	
+}
+
+
+public class Book {
+	private int id;
+	private String title;
+	private String author;
+	private Price price;
+	
+	public int getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public Book(int id, String title, String author, Double price) {
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.price = new Price(price);
+	}
+	
+	public String toString() {
+		return title + " by " + author;
+	}
+	
+	public Price getPrice() {
+		return this.price;
+	}
+	
+	public void setPrice(Double price) {
+		this.price = new Price(price);
+	}
+	
+}
+
+public class BookCollection {
+	
+	private List<Book> books;
+	
+	public BookCollection() {
+		 books = new ArrayList<Book>();
+		 books.add(new Book(1,"Don Quixote","Miguel De Cervantes",3.99));
+		 books.add(new Book(2,"Pilgrim's Progress","John Bunyan",4.45));
+		 books.add(new Book(3,"Robinson Crusoe","Daniel Defoe",3.99));
+		 books.add(new Book(4,"Gulliver's Travels","Jonathan Swift",7.60));
+		 books.add(new Book(5,"Tom Jones","Henry Fielding",9.99));
+		 books.add(new Book(6,"Clarissa","Samuel Richardson",4.45));
+		 books.add(new Book(7,"Dangerous Liaisons","Pierre Choderlos De Laclos",11.50));
+		 books.add(new Book(8,"Emma","Jane Austen",3.99));
+		 books.add(new Book(9,"Frankenstein","Mary Shelley",7.60));
+		 books.add(new Book(10,"The Count of Monte Christo","Alexandre Dumas",3.99));
+	}
+	
+	public Book findBookByName(String title) {
+		for (Book book : books) {
+			if (book.getTitle().equals(title)) {
+				return book;
+			}
+		}
+		return null;
+	}
+	
+	public void printAllBooks() {
+		for (Book book : books) {
+			System.out.println(book.getTitle() + ": " + book.getPrice());
+		}
+	}
+
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		BookCollection bc = new BookCollection();
+		
+		//get price of book called Tom Jones in EUR
+		System.out.println(bc.findBookByName("Tom Jones").getPrice().convert("EUR"));
+		
+	}
+}
+
+```
+
+Multiple issues, returning actual references or objects from getters, should be returning an immutable object or a version of the object that is read-only.
+	

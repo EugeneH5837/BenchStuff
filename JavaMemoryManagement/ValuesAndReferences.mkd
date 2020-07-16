@@ -48,7 +48,87 @@ Name passed back is Diane because when setting the name, a new string object is 
 new string. Old string object is no longer referenced.
 
 # The final keyword
-`final Customer c = new Customer("John");`
+```java 
+final Customer c = new Customer("John"); //This is fine
+``` 
 
+```java
+final Customer c;
+c = new Customer("John");
+c = new Customer("Susan"); //error here
+```
+
+What is meant by the final keyword allows a variable to only be set once, when the variable in the stack is assigned to an object in the heap, we cannot change the object in the heap this variable points to. We can change the object in the heap if we wish. 
+
+Feature is known as "const correctness" but is not available in Java.
+```java
+final Customer c;
+c = new Customer("John");
+c.setName("Susan"); //valid code
+```java
+public class Main{
+    public static void main(String[] args){
+        final Customer c = new Customer("John");
+        //is this method call safe?
+        System.out.println(c.getName());
+        System.out.println(c.getName());
+    }
+}
+```
+Don't know if safe unless we know method implementation.
+```java
+public String getName(){
+    String temp = this.name;
+    this.name = "XXX";
+    return temp;
+}
+```
+It is not safe because it does change the object's state. Because it is final this can be even more difficult to spot. It is only the reference of which object it points to that cannot be changed.
 
 # Exercise
+Predict the outcome
+```java
+
+public class Main {
+
+	public static void main(String args[]) {
+		Main main = new Main();
+		main.start();
+	}
+	
+	public void start() {
+		String last = "Z";
+		Container container = new Container();
+		container.setInitial("C");
+		another(container,last);
+		System.out.print(container.getInitial());
+	}
+	
+	public void another(Container initialHolder, String newInitial) {
+		newInitial.toLowerCase();
+		initialHolder.setInitial("B");
+		Container initial2 = new Container();
+		initialHolder=initial2;
+		System.out.print(initialHolder.getInitial());
+		System.out.print(newInitial);
+	}
+}
+
+
+public class Container {
+	private String initial = "A";
+	
+	public String getInitial() {
+		return initial;
+	}
+	
+	public void setInitial(String initial) {
+		this.initial = initial;
+	}
+}
+```
+
+Prediction: prints "A" then "z" then "B"
+Actual: prints "A" then "z" then "B"
+
+This is because in method start, the container variable still points to the container in the heap that has the initial value of "B".
