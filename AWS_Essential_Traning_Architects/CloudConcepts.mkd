@@ -1,12 +1,10 @@
-[1. Cloud Services](#1-cloud-services)
-
-[2. Cloud Benefits](#2-cloud-benefits)
-
-[3. Cloud Elasticity](#3-cloud-elasticity)
-
-[4. Cloud Constraints](#4-cloud-constraints)
-
-[5. Cloud Administration](#5-cloud-administration)
+| Sections                                           |
+| :------------------------------------------------- |
+| [1. Cloud Services](#1-cloud-services)             |
+| [2. Cloud Benefits](#2-cloud-benefits)             |
+| [3. Cloud Elasticity](#3-cloud-elasticity)         |
+| [4. Cloud Constraints](#4-cloud-constraints)       |
+| [5. Cloud Administration](#5-cloud-administration) |
 
 
 # 1. Cloud Services

@@ -1,4 +1,7 @@
-[1. Design For Failure](#design-for-failure)
+| Sections                                         |
+| :----------------------------------------------- |
+| [1. Design For Failure](#design-for-failure)     |
+| [2. Implement Elasticity](#implement-elasticity) |
 
 # Design For Failure
 Failure should be expected within the individual components of a system, should be architected to prevent application failure
