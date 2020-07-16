@@ -1,2 +1,2 @@
 # BenchStuff
-Notes/Exercises while on bench
+Notes/Exercises for various courses while on bench
