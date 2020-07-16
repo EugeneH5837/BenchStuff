@@ -1,8 +1,8 @@
-[The Stack](#the-stack)
-
-[The Heap](#the-heap)
-
-[Java Memory - Rules](#java-memory---rules)
+| Sections                                    |
+| :------------------------------------------ |
+| [The Stack](#the-stack)                     |
+| [The Heap](#the-heap)                       |
+| [Java Memory - Rules](#java-memory---rules) |
 
 # The Stack
 - Can be many stacks in an application

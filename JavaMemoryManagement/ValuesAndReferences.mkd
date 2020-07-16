@@ -1,10 +1,9 @@
-[Passing variables by value](#passing-variables-by-value)
-
-[How objects are passed](#how-objects-are-passed)
-
-[The final keyword](#the-final-keyword)
-
-[Exercise](#exercise)
+| Sections                                                  |
+| :-------------------------------------------------------- |
+| [Passing variables by value](#passing-variables-by-value) |
+| [How objects are passed](#how-objects-are-passed)         |
+| [The final keyword](#the-final-keyword)                   |
+| [Exercise](#exercise)                                     |
 
 
 # Passing Variables by Value
