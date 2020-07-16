@@ -1,8 +1,10 @@
-[String Pools](#string-pools)
-[Garbage Eligibility](#garbage-eligibility)
-[Garbage Collection Methods](#garbage-collection-methods)
-[Soft Leaks](#soft-leaks)
-[Detecting Soft Leaks](#detecting-soft-leaks)
+| Sections                                                  |
+| :-------------------------------------------------------- |
+| [String Pools](#string-pools)                             |
+| [Garbage Eligibility](#garbage-eligibility)               |
+| [Garbage Collection Methods](#garbage-collection-methods) |
+| [Soft Leaks](#soft-leaks)                                 |
+| [Detecting Soft Leaks](#detecting-soft-leaks)             |
 
 # String Pools
 Stack has a very tight scope, typically in a code block.
