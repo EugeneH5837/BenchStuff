@@ -1,0 +1,54 @@
+[Passing variables by value](#passing-variables-by-value)
+
+[How objects are passed](#how-objects-are-passed)
+
+[The final keyword](#the-final-keyword)
+
+[Exercise](#exercise)
+
+
+# Passing Variables by Value
+```java
+public class Main{
+    public static void main(String[] args){
+        int localValue = 5;
+        calculate(localValue);
+        System.out.println(localValue);
+    }
+
+    public static void calculate(int calcValue){
+        calcValue *= 100;
+    }
+}
+
+```
+calcValue becomes 500, and then is popped off the stack when the method ends, and the local 
+value remains 5.
+
+# How objects are passed
+Passing by Value - For objects passed into methods, the REFERENCE to the object is passed BY VALUE. Copy of the pointer to the object is created,
+object itself is not copied, object isn't passed into parameter but the pointer is.
+
+Example of passing values:
+```java 
+
+    public static void main(String[] args){
+        Customer c = new Customer("Sally");
+        renameCustomer(c);
+        System.out.println(c.getName());
+    }
+
+    public static void calculate(Customer cust){
+        cust.setName("Diane");
+    }
+
+```
+
+Name passed back is Diane because when setting the name, a new string object is created on the heap, and the pointer now points to this
+new string. Old string object is no longer referenced.
+
+# The final keyword
+`final Customer c = new Customer("John");`
+
+
+# Exercise

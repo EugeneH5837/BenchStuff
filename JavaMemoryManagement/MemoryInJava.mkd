@@ -1,4 +1,10 @@
-**The Stack**
+[The Stack](#the-stack)
+
+[The Heap](#the-heap)
+
+[Java Memory - Rules](#java-memory---rules)
+
+# The Stack
 - Can be many stacks in an application
 - Each thread has its own stack
 - Managed by the JVM, knows when data on stack can be destroyed
@@ -7,7 +13,7 @@
   are no longer needed
 - Used for local primitive variables like int, doubles
   
-**The Heap**
+# The Heap
 - All of the memory in application except for data in stacks
 - Heap allows for easier passing around of objects
 - All objects are stored on the heap
@@ -15,7 +21,7 @@
 - Variable is created on stack that points to object that's on the heap
 
 
-**Java Memory - Rules**
+# Java Memory - Rules
 - OBjecst are stored on the heap
 - Variables are a reference to the object
 - Local variables are stored on the stack
