@@ -1,8 +1,10 @@
-[Escaping References](#escaping-references)
-[Example](#example)
-[Avoid escaping references with collections](#avoid-escaping-references-with-collections)
-[Avoiding escaping references with custom objects](#avoiding-escaping-references-with-custom-objects)
-[Exercise](#exercise)
+| Sections|
+| :---------------------------------------------------------------------------------------------------- |
+| [Escaping References](#escaping-references)                                                           |
+| [Example](#example)                                                                                   |
+| [Avoid escaping references with collections](#avoid-escaping-references-with-collections)             |
+| [Avoiding escaping references with custom objects](#avoiding-escaping-references-with-custom-objects) |
+| [Exercise](#exercise)                                                                                 |
 
 # Escaping References
 With a class like the following:
