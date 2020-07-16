@@ -1,0 +1,303 @@
+[String Pools](#string-pools)
+[Garbage Eligibility](#garbage-eligibility)
+[Garbage Collection Methods](#garbage-collection-methods)
+[Soft Leaks](#soft-leaks)
+[Detecting Soft Leaks](#detecting-soft-leaks)
+
+# String Pools
+Stack has a very tight scope, typically in a code block.
+
+If object is created on heap it can be shared between code blocks.
+
+Lifetime on heap will be variable, could live for a long time or very little.
+
+In Java all objects are placed on the heap because one of the design goals of java was to simplify choices and have a single clean way of doing things.
+
+While java does not give us any control over where objects are created, the VM is making the most efficient choice for us. Code will generally run in an optimized way.
+
+Another example of VM optimization 
+
+```java
+public class Main{
+  public static void main(String[] args){
+    String one = "hello";
+    String two = "hello";
+
+    if(one == two){
+      System.out.println("same object");
+    }
+    else{
+      System.out.println("different object");
+    }
+
+    String three = new Integer(76).toString();
+    String four = "76";
+  }
+}
+```
+
+This prints they are the same. Strings are put into a pool and it will re-use whenever possibly, but generally this happens with literals strings and not with strings that are calculated. 
+
+If strings three and four are compared with ==, then it will print they are different. Java hasn't been able to re-use the string created in 3 in 4, that's because three's string was not placed in the pool.
+
+But you can force it the string to be put into the pool by adding .inter() at the end of the string.
+```java 
+String three = new Integer(76).toString().intern();
+```
+The reason is because if strings are going to be re-used should be in pool, so it will lead to less garbage needing to be collected and will be just re-using the same string instead of creating a new object every time.
+
+# Garbage Eligibility
+Memory leaks are caused by objects that are not freed and keep consuming memory.
+Java avoids memory leaks by:
+- Running on a virtual machine. When new is called, it isn't taking memory from the OS, the memory is acquired by the VM, and controls the freeing of memory when objects are no longer needed.
+- Adopts a Garbage Collection strategy. Programmers ask for objects to be created on heap but do not need to free them, an automatic process analyzes the heap and sees which can and need to be deleted.
+
+Java's rule for garbage collection - Any objects on the heap which cannot be reached through a reference from the stack is "eligible for garbage collection".
+
+# Garbage Collection Methods
+gc() and finalize methods()
+
+### gc()
+gc *suggests* that the JVM runs the garbage collection process, no guarantee the VM will actually do it.
+
+```java
+
+public class Customer  {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+	
+	public Customer(String name) {
+		this.name = name;
+	}
+	
+	public Customer(Customer oldCustomer) {
+		this.name = oldCustomer.name; 
+	}
+	
+	
+	public String toString() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+  }
+  
+  public void finalize(){
+    System.out.println("This object is being gc'd");
+  }
+	
+}
+
+
+public class Main {
+	
+	public static void main(String[] args) 
+	{
+		Runtime runtime = Runtime.getRuntime();
+
+		long availableBytes = runtime.freeMemory();
+		System.out.println("Available memory: " + availableBytes / 1024 + "k");
+
+		// let's create a ton of garbage....
+		Customer c;
+		for (int i=0; i<1000000; i++)
+		{
+			c = new Customer("John");	
+		}
+		
+		availableBytes = runtime.freeMemory();
+		System.out.println("Available memory: " + availableBytes / 1024 + "k");
+		
+		System.gc();
+		
+		availableBytes = runtime.freeMemory();
+		System.out.println("Available memory: " + availableBytes / 1024 + "k");
+	}
+
+	
+}
+```
+
+Each customer on the heap is immediately  available for garbage collection.
+
+Sometimes calling gc runs, sometimes it doesn't because it is a suggestion.
+
+One scenario would be determining between two blocks of code which one is more efficient. Since you can't guarantee gc() runs when called, may not even be useful.
+
+Garbage collection also stops all threads momentarily until it is done. Forcing it to happen is generally not a good idea.
+
+### finalize()
+When an object is actually garbage collected, java runs the finalize() method. Method is actually called by the garbage collector when the object is actually removed from the heap.
+
+Method is actually pretty useless because don't actually when it is or isn't actually going to run. When GC does run, no guarantee that the object is going to be garbage collected that time around.
+
+Using finalize 
+```java
+public void closeFile(){
+  file.close()
+}
+
+public void finalize(){
+  if(file.isOpen()){
+    logger.warn("It looks like this resource was not closed");
+  }
+}
+```
+Also no guarantee finalize is called, or used.
+
+# Soft Leaks
+Some leaks are possible in Java. 
+
+Soft leaks - An object is referenced on the stack even though it will never be used again.
+
+Running the risk of possibly running out of memory when there is a soft leak.
+
+Example from exercise files:
+```java 
+public class Customer {
+
+	private int id;
+	private String name;
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String toString() {
+		return id + " : " + name;
+	}
+	
+	public Customer(String name) {
+		super();
+		this.name = name;
+	}
+
+	
+}
+
+public class CustomerHarness {
+	
+	public static void main(String[] args)  {
+		CustomerManager cm = new CustomerManager();
+		GenerateCustomerTask task = new GenerateCustomerTask(cm);
+		for (int user = 0; user < 10; user++) {
+			Thread t = new Thread(task);
+			t.start();
+		}
+		
+		//main thread is now acting as the monitoring thread
+		while (true) {
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			cm.howManyCustomers();
+			System.out.println("Available memory: " + Runtime.getRuntime().freeMemory() / 1024 + "k");
+			
+		}
+	}
+
+}
+
+public class CustomerManager {
+
+	private List<Customer> customers = new ArrayList<Customer>();
+	private int nextId = 0;
+
+	public  void addCustomer(Customer customer) {
+		synchronized (this) {
+			customer.setId(nextId);
+			nextId++;
+		}
+		customers.add(customer);
+	}
+	
+	public Customer getNextCustomer() {
+		//should do:
+		//customers.remove(0);
+		return customers.get(0);
+	}
+
+	public void howManyCustomers() {
+		int size = 0;
+		size = customers.size();
+		System.out.println("" + new Date() + " : " + size);
+	}
+
+	public void displayCustomers() {
+		synchronized(customers){
+			for (Customer c : customers) {
+				System.out.println(c.toString());
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+
+}
+
+public class GenerateCustomerTask implements Runnable {
+
+	private CustomerManager cm;
+	private int totalCustomersGenerated = 0;
+	
+	public GenerateCustomerTask(CustomerManager cm) {
+		this.cm = cm;
+	}
+	
+	@Override
+	public void run() {
+		while (true) {		
+		try {
+			Thread.sleep((1));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Simulate user adding a customer through a web page
+		String name = new UUID(1l,10l).toString();
+		Customer c = new Customer(name);
+		cm.addCustomer(c);
+		totalCustomersGenerated++;
+		cm.getNextCustomer();
+		//System.out.println(totalCustomersGenerated);
+		}
+	}
+
+}
+```
+
+When the max heap size is set to 10 megabytes, exception is thrown showing that the GC overhead limit is exceeded.
+
+# Detecting soft leaks
+Continuation of previous section
+
+Run program can Java VisualVM, shows metrics of how much of the heap is used and the heap size.
+Can see amount of memory being used has plateaued, garbage collection is looking for memory but cannot find any.
+
+Correct the issue by changing method to:
+```java
+public Customer getNextCustomer() {
+		Customer result = null;
+		synchronized (this){
+			if(customers.size() > 0){
+				result = customers.remove(0);
+			}
+		}
+
+		return result;
+	}
+```
+Memory leak is removed.
