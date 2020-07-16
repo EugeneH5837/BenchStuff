@@ -1,0 +1,18 @@
+# Java Memory Management
+[How Memory Works in Java](MemoryInJava.mkd)
+  * [The Stack](#the-stack)
+  * [The Heap](#the-heap)
+  * [Java Memory - Rules](#java-memory---rules)
+
+[Values and References](ValuesAndReferences.mkd)
+  * [Passing variables by value](#passing-variables-by-value) 
+  * [How objects are passed](#how-objects-are-passed)         
+  * [The final keyword](#the-final-keyword)                   
+  * [Exercise](#exercise)
+
+[Escaping Reference](EscapingReferences.mkd)
+  * [Escaping References](#escaping-references)
+  * [Example](#example)
+  * [Avoid escaping references with collections](#avoid-escaping-references-with-collections)
+  * [Avoiding escaping references with custom objects](#avoiding-escaping-references-with-custom-objects)
+  * [Exercise](#exercise)

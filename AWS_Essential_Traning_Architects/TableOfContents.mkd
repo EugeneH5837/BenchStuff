@@ -1,0 +1,12 @@
+# AWS Essential Training For Architects
+
+[Cloud Concepts](CloudConcepts.mkd)
+  * [1. Cloud Services](CloudConcepts.mkd#1-cloud-services)             
+  * [2. Cloud Benefits](CloudConcepts.mkd#2-cloud-benefits)             
+  * [3. Cloud Elasticity](CloudConcepts.mkd#3-cloud-elasticity)         
+  * [4. Cloud Constraints](CloudConcepts.mkd#4-cloud-constraints)       
+  * [5. Cloud Administration](CloudConcepts.mkd#5-cloud-administration)
+
+[Cloud Practices](CloudPractices.mkd)
+  * [1. Design For Failure](#design-for-failure)
+  * [2. Implement Elasticity](#implement-elasticity)
