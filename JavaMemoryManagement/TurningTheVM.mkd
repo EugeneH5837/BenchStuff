@@ -1,0 +1,27 @@
+[Heap Size](#heap-size)
+[PermGen Size](#permgen-size)
+[Garbage Collection, Generation Size, HeapDump](#garbage-collection-generation-size-heap-dump)
+[Choosing a Garbage Collector](#choosing-a-garbage-collector)
+
+
+# Heap Size
+- Xmx set the maximum heap size
+- Xms set the starting heap size
+
+Some performance impact each time heap needs to get more memory.
+
+# PermGen Size
+- XX:MaxPermSize set size of PermGen
+
+# Garbage Collection, Generation Size, Heap Dump
+- verbose:gc print to the console when a garbage collection takes place.
+- Xmn set the size of young generation
+- XX:HeapDumpOnOutOfMemory creates a heap dump file
+
+Young generation should be between 1/4 - 1/2 of overall heap size.
+
+# Choosing a Garbage Collector
+Types of collectors:
+- Serial - uses a single thread to perform all of the GC work. -XX:+UseSerialGC
+- Parallel - Performs GC on young generation in parallel, multiple threads performing GC, useful if multiple cores, good for larger data sets AKA Throughput collector. -XX:+UseParallelGC
+- Mostly Concurrent - Closest we can get to real-time GC, application is not paused while GC occurs. Not actually possibly but this is the closest. -XX:+UseConcMarkSweepGC, -XX:+UseG1GC

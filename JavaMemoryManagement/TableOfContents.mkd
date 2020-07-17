@@ -1,4 +1,4 @@
-# Java Memory Management
+# **Java Memory Management**
 [How Memory Works in Java](MemoryInJava.mkd)
   * [The Stack](MemoryInJava.mkd#the-stack)
   * [The Heap](MemoryInJava.mkd#the-heap)
@@ -25,3 +25,15 @@
   * [Detecting Soft Leaks](IntroductionToGarbageCollection.mkd#detecting-soft-leaks)
 
 [Generational Garbage Collection](GeneralationGarbageCollection.mkd)
+  * [Mark and Sweep](GeneralationGarbageCollection.mkd#mark-and-sweep)
+  * [Generational Garbage Collection](GeneralationGarbageCollection.mkd#generational-garbage-collection)
+  * [Memory Analyzer Tool](GeneralationGarbageCollection.mkd#memory-analyzer-tool)
+  * [PermGen and MetaSpace](GeneralationGarbageCollection.mkd#permgen-and-metaspace)]
+
+[Tuning the Virtual Machine](TurningTheVM.mkd)
+  * [Heap Size](TurningTheVM.mkd#heap-size)
+  * [PermGen Size](TurningTheVM.mkd#permgen-size)
+  * [Garbage Collection, Generation Size, HeapDump](TurningTheVM.mkd#garbage-collection-generation-size-heap-dump)
+  * [Choosing a Garbage Collector](TurningTheVM.mkd#choosing-a-garbage-collector)
+
+[Hunting for a Memory Leak](HuntingForMemoryLeak.mkd)

@@ -1,0 +1,16 @@
+[Example Application](#example-application)
+
+
+# Example Application
+See folders StudentManager and tomcat
+
+add in setenv.bat to 
+set JAVA_OPTS= -Xmx64M -Xms64M
+
+sets up web server that connects to db 
+
+Then use VisualVM to monitor the application. There are typically not memory leaks in tomcat so most likely there is an issue in the code.
+
+Then use jMeter in order to test load the application.
+
+Mostly just testing with Java VisualVM, jMeter, etc.

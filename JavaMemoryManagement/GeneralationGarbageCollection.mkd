@@ -1,0 +1,32 @@
+| Sections                                                            |
+| :------------------------------------------------------------------ |
+| [Mark and Sweep](#mark-and-sweep)                                   |
+| [Generational Garbage Collection](#generational-garbage-collection) |
+| [Memory Analyzer Tool](#memory-analyzer-tool)                       |
+| [PermGen and MetaSpace](#permgen-and-metaspace)                     |
+
+# Mark and Sweep
+Mark and Sweep - Rather than searching for all objects to remove, it looks for objects to retain.
+
+2 Stage process:
+- Marking: Program is paused, all threads paused. GC checks every single live reference, looks at every variable on the stack and follows its reference, object at the end of the reference is marked as alive and any other references that object has is also marked as alive. Then full scan of heap takes place.
+- Sweeping: Removing all non-marked objects.
+- Then all retained objects are moved into a single contiguous block of memory, stops heap from becoming fragmented over time, and makes it easier for VM to allocate memory.
+
+# Generational Garbage Collection
+Most objects don't live for long 
+
+If an object survives it is likely to live forever
+
+GGC is a way of organizing the heap. Heap is divided into young and old generation. New objects are created in the young generation space. When it is full GC takes place only on the young generation. All surviving objects are copied into the old generation. GC of young generation is known as a **minor generation**. While a **major collection** is GC run on the old generation. A major collection will take longer since it is a larger block of memory and surviving objects will need to be copied.
+
+Java VisualVM can show memory used by application and there is a perform GC that can be manually run. A plugin can be added called Visual GC which can show young and old generation.
+When space called Eden is full, GC occurs and survivors move to S0 then to S1. Old contains objects that survive approximately 8 garbage collections.
+
+# Memory Analyzer Tool
+In VisualVM, in heapdump it tells where the dump file is located. Use the Eclipse Memory Analyzer Tool, load in the dump file and select leak suspects tool. Gives a chart about possible object taking up memory and which thread has an object thats taking up a certain amount of memory. Details link gives tree about which object contains the object that is using up the specified amount of memory.
+
+# PermGen and MetaSpace
+PermGen - **Permanent Generation**, objects that will survive forever, it is never garbage collected. Two types of objects go into this, Strings that are placed into a pool. The other object is the metadata of a class. When PermGen runs out of space, means application has too many classes or internalized strings, not due to code errors or memory leaks. Only fix is to increase allocated size of PermGen.
+
+In Java 8 PermGen is removed, MetaSpace is added that is a separate area of memory that is no apart of the heap. Allocated out of computer's native memory, it is the size of the computer's native available memory. When classes are no longer createable, the meta data related to those classes are removed.
