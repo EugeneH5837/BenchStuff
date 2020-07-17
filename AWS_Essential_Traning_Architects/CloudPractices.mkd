@@ -1,9 +1,13 @@
-| Sections                                         |
-| :----------------------------------------------- |
-| [1. Design For Failure](#design-for-failure)     |
-| [2. Implement Elasticity](#implement-elasticity) |
+ | Sections                                                    |
+ | :---------------------------------------------------------- |
+ | [1. Design For Failure](#1-design-for-failure)              |
+ | [2. Implement Elasticity](#2-implement-elasticity)          |
+ | [3. Decouple Your Components](#3-decouple-your-components)  |
+ | [4. Optimize For Performance](#4-optimize-your-performance) |
+ | [5. Keep Things Secure](#5-keep-things-secure)              |
+ | [6. Optimize For Cost](#6-optimize-for-cost)                |
 
-# Design For Failure
+# 1. Design For Failure
 Failure should be expected within the individual components of a system, should be architected to prevent application failure
 
 Thinking about failure during design process, which will lend itself to a better, more stable product
@@ -23,7 +27,7 @@ Elastic load balancing takes care of redundancy and scales automatically. With A
 
 There is now no single point of failure. 
 
-# Implement Elasticity
+# 2. Implement Elasticity
 Refers to the ability of cloud to scale resources to demand, typically done with a few methods:
 - Regular fixed basis like hourly, daily, or weekly. Works if application has highly predictable traffic times.
 - Scale components in anticipation of events, scale up or out due to some marketing campaign.
@@ -34,3 +38,54 @@ To take full advantage of scaling:
 - System configuration adjustment to accommodate scaling
 - AWS has deployment services/tools to make processes straightforward (AKA Bootstrapping - self-sustaining start-up process) in AWS this is getting a process up and running on an EC2 instance
 - As an architect, the application must be designed to take advantage of elasticity.
+
+# 3. Decouple your components
+Loose coupling - if one of the components in the architecture failed, the other components continue as if it hasn't failed.
+
+One  example is Three tier app architecture.
+
+Elastic Load Balancing (ELB) -> Multiple Web Servers -> ELB -> Multiple Web Servers -> ELB -> Database Cluster (RDS) 
+
+Architecting with loose coupling allows the components to individually scale
+
+By using a load balancer or message queue such as a web server to app server, the coupling is loosened so it doesn't need to know exactly what it needs to connect to. 
+
+On AWS services such as ELB, SQS, Simple Workflow Engine, and simple notification services are all things offered that help with loosening coupling.
+
+# 4. Optimize your performance
+Optimizing using cloud computing resources efficiently is just as important as decreasing latency and throughput in systems.
+
+Part of this is knowing the services landscape and keeping up to date with technological advances. Start by investigating how services offered help with the use case. If there are services that allow for the complexity to be handled more by the vendor, this helps optimize efficiency and performance.
+
+Push the boundaries to see how much can be moved toward the vendor/cloud. Example is when hosting a static website, initial thought may be to use EC2 services to launch a web server. But even better you can use S3 and CloudFront to play the role of the web server and not have to worry about web servers at all. Then having a service like Lambda to execute can eliminate the need for app servers.
+
+Monitoring of applications is also another important aspect to view metrics of the application and then send notifications when something set has been triggered. This also means to monitor the landscape of services being offered by AWS or other cloud providers.
+
+# 5. Keep Things Secure
+| Cloud Provider (AWS Provides)   | Cloud Customer (You Provide) |
+| :------------------------------ | ---------------------------: |
+| Physical Security               |       Network-level security |
+| Infrastructure                  |   Application-level security |
+| Equipment                       |          Data-level security |
+| Separation from other customers |
+
+AWS provides options to encrypt data before storing on cloud-storage devices. File systems can also be encrypted. 
+
+Tips:
+- Https should be used to access all AWS API endpoints
+- Pass in access key info during build or launch of your application
+- Use IAM roles and launch your instance in a specific role so it will have the access it needs
+- Rotate your access keys often
+
+IAM - Identity and Access Management service, should be used to manage access control.
+
+Use Security Groups = Firewalls (like firewalls for access control)
+
+Secure your own application code, all pre-cloud security practices still apply.
+
+# 6. Optimize For Cost
+Cost Optimization is ability to identify and eliminate un-needed cost
+
+Embrace the consumption payment model offered by AWS. Only bills for resources being actively used. Only use resources that are needed so it matches supply with demand. 
+
+This is done with auto-scaling, this approach ensures that supply will always match demand. Also need to see cost-effective resources are being used like the correct EC2 instance size is being used.

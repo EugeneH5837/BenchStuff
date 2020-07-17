@@ -1,4 +1,4 @@
-# AWS Essential Training For Architects
+# **AWS Essential Training For Architects**
 
 [Cloud Concepts](CloudConcepts.mkd)
   * [1. Cloud Services](CloudConcepts.mkd#1-cloud-services)             
@@ -8,5 +8,11 @@
   * [5. Cloud Administration](CloudConcepts.mkd#5-cloud-administration)
 
 [Cloud Practices](CloudPractices.mkd)
-  * [1. Design For Failure](#design-for-failure)
-  * [2. Implement Elasticity](#implement-elasticity)
+  * [1. Design For Failure](CloudPractices.mkd#1-design-for-failure)              
+  * [2. Implement Elasticity](CloudPractices.mkd#2-implement-elasticity)          
+  * [3. Decouple Your Components](CloudPractices.mkd#3-decouple-your-components)  
+  * [4. Optimize For Performance](CloudPractices.mkd#4-optimize-your-performance)
+  * [5. Keep Things Secure](CloudPractices.mkd#5-keep-things-secure)
+  * [6. Optimize For Cost](CloudPractices.mkd#6-optimize-for-cost)
+
+[Keep Things Secure](KeepThingsSecure.mkd)
