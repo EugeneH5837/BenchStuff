@@ -1,0 +1,68 @@
+[The Shared Security Model](#the-shared-security-model)
+[IAM: Master account](#the-shared-security-model)
+[IAM: Groups, roles, and permissions](#iam-groups-roles-and-permissions)
+
+# The Shared Security Model
+The security responsibility is shared between the customer and Amazon. Requires AWS and customers to work together to implement security models.
+
+Amazon provides "Security of the Cloud" such as physical security and security of the global infrastructure.
+
+Customer is responsible for security of what is put in the cloud, anything that is put on top of that infrastructure. Customer is always responsible for account and user management security.
+
+Service Categories:
+- Infrastructure services - IaaS ie EC2, EBS, Auto-Scaling
+- Container services - PaaS; EC2 instances abstract out platform and OS layer. RDS, Elasticsearch, ECS, Elastic Beanstalk, etc.
+- Software services - SaaS, abstract platform and management layer, accessed using APIs. Amazon Elastic Transcoder, Amazon Lex, Amazon Athena.
+
+## Shared Security Line for IaaS
+![SharedSecurityLineIaaSImage](./Images/SharedSecurityIaaS.png)
+
+## Shared Security Line for PaaS
+![SharedSecurityLinePaaSImage](./Images/SharedSecurityPaaS.png)
+
+## Shared Security Line for SaaS
+![SharedSecurityLineSaaSImage](./Images/SharedSecuritySaaS.png)
+
+# IAM: Master account
+Identity Access Management, allows control of access and permissions of AWS resources in the account.
+
+Initial Create Account -> Master Account (Master User) -> Has access to Everything
+
+Keep the Master User Secure
+- Don't share credentials
+- Don't use this user for routine access
+- Turn on MFA
+
+# IAM: Groups, roles, and permissions
+IAM manages:
+- Users
+- Groups
+- Roles
+- Permissions
+
+Controls who have access and who is granted access, who can perform what access, and what resources are available.
+
+IAM -> Master User -> No access by default
+Master User -> Login Credentials, API Keys, Permissions
+IAM can also create groups, which have one more permissions, and users are added to these groups.
+
+IAM Roles:
+- Similar to user
+- Assumed by resources requiring the role
+- No login credentials
+- No direct static access keys associated
+
+IAM -> Roles, setup with permissions set up 
+When a user assumes a role, only permissions given are allowed
+
+IAM Users or AWS Services can assume a role to:
+- Allow temporary security credentials
+- An alternative to credential sharing
+- No need to define permissions and manage each entity
+
+Use Case: THird party vendor account access
+AWS Recourse can be launched into roles
+Needed access keys can be embedded into resources at launch, rather than shared or stored on the file system
+
+Tip: Never use your master account to access your resources or manage your services. Create separate users, groups, roles, and permissions in IAM and only allow access when absolutely needed and only to the specific resources that are needed.
+
