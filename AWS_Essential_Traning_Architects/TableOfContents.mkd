@@ -16,3 +16,6 @@
   * [6. Optimize For Cost](CloudPractices.mkd#6-optimize-for-cost)
 
 [Keep Things Secure](KeepThingsSecure.mkd)
+  * [The Shared Security Model](KeepThingsSecure.mkd#the-shared-security-model)
+  * [IAM: Master account](KeepThingsSecure.mkd#the-shared-security-model)
+  * [IAM: Groups, roles, and permissions](KeepThingsSecure.mkd#iam-groups-roles-and-permissions)
