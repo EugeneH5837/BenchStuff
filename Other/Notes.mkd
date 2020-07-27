@@ -1,0 +1,190 @@
+# Docker Stuff
+Docker is an operating system for containers.
+
+Docker deploying to AWS - Create docker image of application, Amazon ECR then manages the images, encrypts them and controls access to images, etc. Then Amazon ECS pulls the images and runs them.
+
+Amazon ECS is a container management service that starts, stops, and manage docker containers on a cluster.
+Cluster is hosted on serverless infrastructure that is managed by ECS by launching services/tasks using Fargate. For more control, the tasks can be hosted on a cluster of Amazon EC2. EC2 provides complete control of computing resources.
+
+Reading logs from docker image - either open up bash terminal inside docker container to see the image or create volume of the logs created by the image.
+
+# Node
+How node runs as backend service with something like node express.
+
+# Java
+Java 7 vs Java 8 - Biggest change is the addition of functional programming using streams API and the addition of Lambda functions and functional interfaces.
+
+## Functional Interface 
+Contains only a single abstract method. It can then be implemented using a lambda expression.
+
+```java
+public interface MyFunctionalInterface {
+    public void execute();
+}
+
+MyFunctionalInterface lambda = () -> {
+    System.out.println("Executing...");
+
+```
+
+## Function Interface
+Represents a single function (method) that takes a single parameter and returns a single value
+```java
+public interface Function<T,R> {
+
+    public <R> apply(T parameter);
+}
+
+public class AddThree implements Function<Long, Long> {
+
+    @Override
+    public Long apply(Long aLong) {
+        return aLong + 3;
+    }
+}
+```
+
+which can then be used with .apply
+```java
+Function<Long, Long> adder = new AddThree();
+Long result = adder.apply((long) 4);
+System.out.println("result = " + result); //prints 7
+```
+
+It can also be implemented using a lambda expression.
+```java
+Function<Long, Long> adder = (value) -> value + 3;
+Long resultLambda = adder.apply((long) 8);
+System.out.println("resultLambda = " + resultLambda); //prints 11
+```
+
+## Predicate Interface
+A simple function that takes a single value as a parameter and returns true or false.
+```java
+public interface Predicate {
+    boolean test(T t);
+}
+```
+One way it can be implemented is like
+```java
+public class CheckForNull implements Predicate {
+    @Override
+    public boolean test(Object o) {
+        return o != null;
+    }
+}
+```
+Or with a lambda expression like 
+```java 
+Predicate predicate = (value) -> value != null;
+```
+
+## Unary Operator
+Functional interface that represents an operation that takes a single parameter and returns a parameter of the same type.
+```java 
+UnaryOperator<Person> unaryOperator = (person) -> { person.name = "New Name"; return person; };
+```
+
+## Binary Operator
+Functional interface that takes two parameters and returns a single value. Both parameters and return type must be the same type.
+```java 
+BinaryOperator<MyValue> binaryOperator = (value1, value2) -> { value1.add(value2); return value1; };
+```
+
+## Supplier
+Functional interface that represent a function that supplies a value of some sort. Can also be though of as a factory interface.
+```java
+Supplier<Integer> supplier = () -> new Integer((int) (Math.random() * 1000D));
+```
+
+## Consumer
+Functional interface that represents a function that consumes a value without returning any value.
+Can be printing a value, writing to file, etc.
+```java
+Consumer<Integer> consumer = (value) -> System.out.println(value);
+```
+
+Simple algorithm with streams API to filter out numbers divisible by something, etc. Enhancements to the Collections libraries.
+
+Lombok: Library that allows you to now have to write out boilerplate code like getters, setters, constructors, toString, equals, logging (slf4j).
+
+# Spring Boot
+Libraries to pull in for REST API - Use Spring Initializr and choose Spring Web starter for REST API, then also pull in Lombok, maybe JDBC, etc.
+
+# Testing
+End-to-end testing - Testing whether the flow of an application from start to finish behaves as expected. It is done to identify system dependencies and to ensure data integrity is maintained. This is first done by creating user functions that simulate real-world activities with the application that is to be tested. This also includes setting up conditions for success or failure.
+****
+Typically involves analyzing the existing systems and testing requirements, outlining of hardware and software requirements for test environment and responsibilities. Then test cases are set up for each subsystem and a framework like Selenium or Cypress is used for E2E testing.
+
+Test pyramid - refers to the three layers that your test suite should consist of, UI Tests, Service Tests, and Unit Tests
+
+![Test Pyramid](./TestPyramid.png)
+
+or
+
+![Another One](./AnotherTestPyramid.png)
+
+Basically the same concept. It is mainly to prevent the tests suite from becoming an ice cream cone, which is essentially the opposite with the ice cream being manual regression at the top.
+
+Write tests with different granularity
+The more high-level you get the fewer tests you should have
+
+Webdriver - Selenium WebDriver is a test suite that talks to a browser through a driver, two way direct communication from WebDriver <-> Driver <-> Browser in a host system.
+Communication can also be done through remote communication through a Selenium Server or RemoteWebDriver, which runs on the same system as the driver and the browser.
+
+WebDriver is a web automation framework that allows you to execute your tests against different browsers
+
+WebDriver <-> (RemoteWebDriver <-> Driver <-> Driver) Host System
+
+Remote communication can also take place using Selenium Server or Selenium Grid, which then talk to the driver on the host system.
+
+WebDriver <-> Selenium Server or Grid <-> (Driver <-> Browser) Host System
+
+It's main job is to communicate with the browser. Which is where various test frameworks come in. The test framework is responsible for running and executing your WebDriver and related steps in your tests.
+
+Test Framework (WebDriver) <-> Selenium Server or Grid <-> (Driver <-> Browser) Host System
+
+Selenium WebDriver tool is used to automate web application testing to verify that it works as expected
+
+Arrange, Act and Assert (AAA) Pattern - Divide test method into three sections, each one responsible only f or the part they are named after.
+
+Why we test - pinpoints defects in the application. Ideally done through automated processes, improves consistency and performance, along with debugging. Also provides validation of correctness for the application.
+
+# Serverless
+Serverless computing is a method of providing backend services on an as-used basis.Lets users write and deploy code without worrying about underlying infrastructure. Lets you build and run applications and services without thinking about servers. Eliminates tasks such as server or cluster provisioning, patching, OS maintenance, adn capacity provisioning.
+
+
+# AWS
+Deploy application to AWS - 
+
+Auto-scaling - The automatic adjustment of resources given to an application across multiple servers based on metrics.
+
+What can trigger auto-scaling - They can be configured but various values can be set to trigger auto-scaling. 
+- **Metric** used for the trigger
+- **Statistic** calculation
+- **Unit** for the trigger like Bytes, 
+- **Period** specifies how frequently CloudWatch measures the metrics for your trigger
+- **Breach Duration** amount of time in minutes that a metric can be outside of the upper and lower thresholds before triggering a scaling operation
+- **Upper threshold** If the metric exceeds the number for the breach duration, scaling operation is triggered
+- **Scale up increment** the number of EC2 instances to add when performing a scaling activity
+- **Lower threshold** if the metric falls below this number for the breach duration, a scaling operation is triggered
+- **Scale down increment** The number of EC2 instances to remove when performing a scaling activity.
+
+Some metrics are - CPUUtilization, DiskReadBytes, DiskReadOps, DiskWriteBytes, DiskWriteOps, NetworkIn, NetworkOut, StatusCheckFailed, StatusCheckFailed_Instance, StatusCheckFailed_System
+
+# Extra
+Debugging an application running in docker on prod - ssh into ec2 instance look at logs?
+
+To ssh into EC2 instance need key pair and can connect from terminal or from the aws console.
+
+Code is pushed to a repository 
+ECR Repository is created
+
+Then from the CI/CD Pipeline, it runs and builds the project and creates the image and puts it into the corresponding ECR repository
+
+Also need public VPC 
+
+Then an ALB is created with the correct security groups and on the corresponding VPC
+In ECS a task is created with either Fargate (AWS managed) or EC2 (Self managed), with fargate you choose the system specs like CPU etc, and then add in the container
+In ECS then create a cluster, and then add in the task definition created earlier into a service in that cluster. Then in the same configuration add in the load balancer created earlier
+ 

@@ -1,0 +1,73 @@
+
+
+# IAM 
+IAM - Identity and Access Management
+Provides means for access to:
+- Computing
+- Storage
+- Database
+- App Services
+
+Managed by:
+- Groups and users
+- Roles and policies
+
+Applied to API Calls
+
+Determine which services, actions, and resources a user has access to
+
+Not just users - also processes
+
+# Roles and Policies
+Many are created automatically for you.
+
+- Policies specify specific permissions
+- Roles are collection of policies that services are assigned
+
+Policies:
+- Permissions for users, application code, or AWS Services
+- Use similar JSON to define own policy
+- See S3 read only vs S3 full access
+
+# Cognito
+Amazon Cognito offers user pools and identity pools. **User pools** are user directories that provide sign-up and sign-in options for your app users. 
+**Identity Pools** provide AWS credentials to grant your users access to other AWS services.
+
+User Pools:
+- Settings and options for creating and logging in users
+- You set requirements: username, password, MFA, etc.
+
+Identity pools:
+- ALlow users (logged in or not depending on the pool) to access AWS service (like S3)
+
+# User Pools
+- When creating, stepping through naming and options (username, email, etc.), needs a role.
+- Needs a role (create role button)
+- Allows for triggers(Ex: run lambda after authentication)
+- Creation process or Mobile Hub can step you through
+
+# Identity Pools
+Great way to authenticate through anonymous access
+- Created for you via Mobile Hub User Sign-in addition for other sources (google, facebook , etc.)
+- Can also be used to store user data helpful to sync data across multiple clients using the same account
+- But AWS now has AppSync, newer way to accomplish previous point
+
+# Identity Provider
+SAML Example:
+- Must register AWS with your SAML 2.0 IdP as service provider
+- Your IdP needs to be configured with AWS an an IdP via IAM
+- IdP setup includes role and policy for user privileges
+- User logs in with existing acct on your server
+- Receives back SAML assertion
+- SAML used in AssumeRoleWithSAML call to AWS Security Token Service (STS)
+- STS returns credentials to be used in AWS calls
+
+# Web Identity Federation (WIF)
+- If your does/can use OpenID connect, you can use it to authorize users
+- OpenID connect login returns access token
+- Use token in AssumeRoleWithWebIdentity call for temp credentials
+
+To create OpenID Connect server as a identity provider
+1. Register as developer with IdP (like fb) and create app presence there
+2. Create IdP in IAM to establish trust (Google and Cognite supported by default)
+3. Configure identity pool in Cognito

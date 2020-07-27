@@ -1,0 +1,51 @@
+
+# Elastic Beanstalk
+- Deploy and scale web apps and services
+- Supports variety of languages and serves like Java, .NET, PHP, Node, Go, Ruby, Docker
+- Servers like Apache, NGINX, Passenger, and IIS
+- Creates EC2 Instances for you: VM instance running Amazon Linux or Microsoft Windows Server configured for web apps
+- Security Group: EC2 security configuration for port 80 HTTP ingress only (needs VPC and doesn't create it)
+- Auto Scaling group: configured to replace an instance if terminated or unavailable.
+- Creates S3 bucket: for source code, logs, and other artifacts created for Elastic Beanstalk needs
+- CloudWatch alarms: two to monitor load and triggers when too high or low for the Auto Scaling group
+- Domain name: routes to your web app subdomain.region.elasticbeanstalk.com
+
+Main Steps:
+- Select a platform
+- Upload app or use sample
+- Run it
+
+To delete the bucket, need to go into bucket policy and change the ARN of the user or delete section that prevents from being deleted.
+
+# CloudFormation
+Uses stacks to maintain and configure your system by provisioning and managing stacks of AWS resources.
+ElasticBeanstalk automatically creates a template for you
+
+Displaying template you can see for the stack and a visual representation using designer in AWS
+
+# ElastiCache
+Helps with caching data, makes it easier to launch, manage, and scale a distributed in-memory cache in the cloud.
+
+Just creation of ElastiCache and viewing the security for that group along with adding it to a vpc and it's subnets.
+
+# Lambda using Cache
+Example setting up lambda by connecting it to ElastiCache and then that lambda gets the uuid, writes it to the cache and then with that value, edit the code and put the value as a constant. Test is successful as it gets that constant and compares that it is the same, which it is.
+
+# CloudFront
+- Global Content Delivery Network (CDN)
+- Securely and quickly delivers data, video, applications, and APIs
+- Global network of edge locations and regional edge caches
+- Ensure that end-user requests are served by the closest edge location: Shorter distance = Higher performance 
+- Not cached? Persistent connections to origin servers for fast fetching
+
+Example is creating CloudFront distribution from S3 bucket on an html file, all that is done is editing the read access for the file, then creating the distribution and from that distribution's url, can access the file.
+
+# CloudWatch
+- AWS monitoring and management service
+- Provides data and actionable insights to determine health
+- Logs, metrics, and events
+- Create "high-resolution" alarms and automated actions
+- Monitor your costs
+- Monitor S3 buckets, etc.
+
+Basic alarm setup on latency delay to dynamo db table

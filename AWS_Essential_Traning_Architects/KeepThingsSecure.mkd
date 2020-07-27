@@ -66,3 +66,13 @@ Needed access keys can be embedded into resources at launch, rather than shared 
 
 Tip: Never use your master account to access your resources or manage your services. Create separate users, groups, roles, and permissions in IAM and only allow access when absolutely needed and only to the specific resources that are needed.
 
+# Creating a new user
+
+Just a video walkthrough of how to create a new user with permissions and settings users/roles and groups can do in AWS.
+
+# Creating a key pair 
+Your Host (Keypair name, private key, public key) -> EC2 (Keypair Name, Public Key) -> Instance(Keypair Name, Public Key)
+
+provide private key when connecting to instance. Keypair is used to login using ssh.
+
+Key pairs can be created from the EC2 Service.`

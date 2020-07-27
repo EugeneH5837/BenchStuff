@@ -1,0 +1,41 @@
+
+# Simple Queue Service
+- Send, store, and receive messages between apps and software components
+- Decouple and scale better
+- Use service side encryption (SSE) and Key Management Service (KMS) for security 
+
+Types of Queues:
+- Standard: Maximum throughput, best-effort ordering, at-least-once-delivery
+- FIFO: processed exactly once, in order
+
+Example: Lambda function can process messages
+Configure trigger for lambda function on queue and send message (via message body and message attributes)
+
+Example is adding SQS queue and then adding trigger to the lambda function
+
+# Simple Notification Service
+SNS pushes its messages out to its subscribers while SQS stores until someone processes them and removes them off the queue 
+
+SNS can create topics
+
+# Events and Lambda
+Setting up trigger to lambda when an item action occurs in dynamo DB
+
+# Step Functions 
+Based on concepts of tasks and state machines
+
+Tasks:
+- Code (Lambda) or activity (waits for operator to perform something)
+
+State Machines:
+- States, their machines, and input/output
+- Amazon States Language
+- States make decisions based on input, perform actions, and pass output to other states
+
+Examples:
+- Syncing/backing up S3 buckets
+- Email verification/confirmation,authorization of process
+- Scaling image automation
+
+Then example with creating a step function with an example execution and showing the workflow as it goes and connects to a lambda.
+

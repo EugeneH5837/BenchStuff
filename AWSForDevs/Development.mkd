@@ -1,0 +1,15 @@
+
+
+# SDK and Tools
+Various SDKs like JS, Python, PHP, Android, IoT (Embedded C), Java, IDEs, etc.
+
+# Simple Storage Service (S3)
+- Great online file storage option
+- Access from a variety of sources: web/console, APIs, FTF apps
+
+# Dynamo DB
+Non-relational database
+Creation of table in AWS
+
+# Lambdas
+Setting up lambda with blueprint and testing it 
