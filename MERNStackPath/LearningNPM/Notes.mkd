@@ -1,0 +1,59 @@
+# Global Directions
+Unix-based:
+- /usr/local/lib/node_modules Or 
+- /usr/local/lib/node
+
+Windows 7 or Later:
+- %Appdata%\npm\node_modules
+
+Same commands for global installs like:
+npm install -g react
+
+npm outdated to check outdated dependencies 
+
+to update use:
+npm install 
+npm update
+
+Local packages denoted with --save-dev
+
+# Removing a package
+npm uninstall
+
+# Semantic Versioning
+First num major release
+Minor num is minor release
+Lat num is patches/releases
+Caret (^) means minor and patches are OK, won't go up from 1.x.x to 2.x.x, but will update to most recent minor and patch numbers
+Tilde (~) All only like 1.5.x, won't go up to 1.6
+
+# Package-lock.json
+The package-lock.json is the output after npm install, will guarantee same install wherever the project is passed to.
+The file just needs to be included.
+
+# Npm Cache
+Npm keeps cache of installs, sometimes the cache gets confused so clearing the cache may fix issues in modules.
+
+npm cache verify - runs a report that verifies your cache
+npm cache clean --force - forces the cache to be cleaned.
+
+# Npm Audit
+Npm Audit command checks dependencies of project and sees if they are safe to use 
+
+# Scripting in package.json
+docs.npmjs.com/misc/scripts
+
+Predefined scripts and you can also create your own.
+
+# Introduction to npx
+npx -p @angular/cli ng new myapp
+temporarily install the tool if the package isn't installed on your system
+
+or something like npx mocha, which would run the tests
+or like npx cowsay hello!
+
+can also be added into scripts in package.json
+
+# Alternatives
+Other alternatives like yarn
+Another option is called ni 

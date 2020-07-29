@@ -1,0 +1,46 @@
+# Core Modules Ch 4
+core.js
+
+util module provides more information in the logging to the terminal, all thats needed is to require the module.
+v8 gives some system information such as the heap usage.
+
+can also do destructuring with the modules, so basically being able to statically call a method reference from the module
+example is 
+```javascript
+const util = require("util");
+const {log} = require("util");
+```
+so now can just call log(etc), instead of doing util.log()
+
+# Readline
+ask.js
+
+readline question first param is what to be asked, second is callback function for once question has been answered.
+
+# Write a file
+questions.js 
+
+more complex file using readline to answer questions with functions taking in params and a callback.
+
+# Export custom modules
+myModule.js and app.js
+
+can export module and be picked up using require in another file.
+
+# Create a module 
+Reusability, moving function collectAnswers into its own file in the lib folder and changing so it exports as a module.
+newQuestions.js and collectAnswers.js
+
+by adding done as 
+```javascript
+done = f => f
+```
+lets the callback function be optional and does nothing so it doesn't break the code.
+
+# Custom events with EventEmitter
+events.js
+emitter.emit first param is name of the function, next set represents data you want to pass to the handler of the event.
+events are also asynchronous
+
+# Improving a module with EventEmitter
+making adjustments to collectAnswers.js using EventEmitter and adding listeners into questions.js

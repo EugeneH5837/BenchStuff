@@ -1,0 +1,31 @@
+# List directory files
+list.js
+
+Can be used to read files in directory async or sync.
+
+# Read Files
+readFile.js
+
+Can read text files and binary files like jpg. Only difference is in the method readFile (which is async, so supply callback method) for text
+files provide the encoding, otherwise don't. 
+
+# Write files
+writeFile.js
+Can write to files using fs.writeFile providing params of path, text, and callback function once it is executed.
+
+# Directory creation
+directory.js
+Can create directory and check if exists 
+
+# Append files
+append.js
+
+appendFile function will create file if does not exist and append to existing file.
+
+# Rename and remove files
+rename.js
+
+# Rename and remove directory
+directories.js
+
+to remove directory need to remove files from a directory first

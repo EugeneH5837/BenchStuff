@@ -1,0 +1,36 @@
+# Global objects/variables Ch 3
+First video is just showing global variables/scope
+
+# Require function
+Common JS module pattern is how you import it using keyword *require*
+
+# Argument variables with process.argv
+globalProcess.js
+
+Stores the arguments as an array that passes through command line
+
+# Standard output and input
+questions.js
+
+using process.stdout
+
+Shows example of how to do asynchronously
+
+Can have lambda on the listener with the param such as with 
+
+```javascript
+process.on('exit', () => {
+
+});
+```
+
+# Creating delay
+can use timing to work asynchronously
+timers.js
+
+setTimeout first param is function to invoke when done, second param is how long to wait.
+
+# SetInterval
+timers.js
+
+setInterval calls the first param function every interval time that is in the second param.

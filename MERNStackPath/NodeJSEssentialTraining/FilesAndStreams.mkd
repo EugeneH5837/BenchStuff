@@ -1,0 +1,20 @@
+# Readable file streams
+readStream.js
+
+process.stdin is a readable stream
+
+reading files with streams causes nodeJS application to use less memory
+because instead of loading it into a buffer, you are reading bit by bit and chunk
+by chunk
+
+# Writeable file streams
+writeStream.js
+writeStream writes to a file, but can also use readStream to read from a file then copy it to another file.
+readableStreams made to work with writeableStreams as shown in method like pipe
+
+# Create Child process with exec
+exec.js
+can run and communicate with other applications
+execute designed to handle synchronous processes, not asynchronous processes
+
+# Create child process with spawn
