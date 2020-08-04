@@ -1,0 +1,8 @@
+Template engines provide special syntax to work with dynamic data
+
+typically because html has some dynamic data it should be loading with the provided html
+
+Another reason you want template engines is because you can split sections into separate files
+so it gives modularization
+
+Using the EJS template engine

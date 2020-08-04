@@ -1,0 +1,135 @@
+Can do various things like REST requests using Hapi to MongoDB.
+
+# Mongo Queries
+commands such as
+```js
+db.tours.find({}, {tourName:1, _id:0, tourLength:1, tourPrice:1}).pretty().sort({tourPrice:-1}).limit(1)
+```
+
+performs a query on the elements in the tours table, sorts descendingly and can limit the amonut shown, can chain multiple methods together.
+
+Can also implement paging by using the .skip(n) method.
+
+```js
+db.tours.find({}, {tourName:1, _id:0, tourLength:1, tourPrice:1}).pretty().sort({tourPrice:-1}).limit(1).skip(20)
+```
+
+to query on an nested array on field can be done like on field tourTags
+```js
+db.tours.find({"tourTags":"boating"})
+
+db.tours.find({tourPrice:{$lte:1000, $gte:800}}).pretty()
+```
+so can limit on field with less than or equal to and greater than on equal to
+
+# Text indexes
+When searching using an index for best performance, each document searched by text is returned with a relevance score
+
+can also use Regex to search like:
+
+db.tours.find({tourDescription:{$regex:/backpack/}})
+
+# Model your schema
+Basically doing a join in MongoDB
+
+```js
+var moviename = "The Avengers"
+var movieobj = db.movies.findOne({_id:moviename})
+movieobj.cast=[]
+var personArray = db.pepople.find({movies:movieName})
+personArray.forEach(function(person) { movieobj.cast.push(person) })
+```
+
+movieobj now contains list of cast that have movie listed in their field
+
+# Aggregation
+db.tours.count({tourPackage:"Cycle California"})
+
+instead of looping through, can use an aggregate
+
+```js
+> db.tours.aggregate([{$group: {_id: '$tourPackage', count: {$sum:1}}}])
+{ "_id" : "California Calm", "count" : 3 }
+{ "_id" : "From Desert to Sea", "count" : 2 }
+{ "_id" : "Kids California", "count" : 3 }
+{ "_id" : "California Hot springs", "count" : 3 }
+{ "_id" : "Nature Watch", "count" : 3 }
+{ "_id" : "Snowboard Cali", "count" : 3 }
+{ "_id" : "Taste of California", "count" : 4 }
+{ "_id" : "Backpack Cal", "count" : 5 }
+{ "_id" : "Cycle California", "count" : 3 }
+
+> db.tours.aggregate([{$group: {_id: '$tourOrganizer.organizerName', count: {$sum:1}}}])
+{ "_id" : "Lance Armstrong", "count" : 2 }
+{ "_id" : "Martin Jones", "count" : 4 }
+{ "_id" : "Alison Birch", "count" : 4 }
+{ "_id" : "Ishmael Fisher", "count" : 4 }
+{ "_id" : "John Smith", "count" : 5 }
+{ "_id" : "Amber Fineway", "count" : 3 }
+{ "_id" : "Smokey Bear", "count" : 2 }
+{ "_id" : "Mickey Mouse", "count" : 1 }
+{ "_id" : "Jack Kerouak", "count" : 1 }
+{ "_id" : "Tony Hawkins", "count" : 3 }
+
+> db.tours.aggregate([{$group: {_id: '$tourPackage', average: {$avg: '$tourPrice'}, count: {$sum: 1}}}])
+{ "_id" : "Cycle California", "average" : 3233.3333333333335, "count" : 3 }
+{ "_id" : "California Hot springs", "average" : 916.6666666666666, "count" : 3 }
+{ "_id" : "Kids California", "average" : 716.6666666666666, "count" : 3 }
+{ "_id" : "Snowboard Cali", "average" : 900, "count" : 3 }
+{ "_id" : "Taste of California", "average" : 418.75, "count" : 4 }
+{ "_id" : "Nature Watch", "average" : 866.6666666666666, "count" : 3 }
+{ "_id" : "From Desert to Sea", "average" : 275, "count" : 2 }
+{ "_id" : "California Calm", "average" : 558.3333333333334, "count" : 3 }
+{ "_id" : "Backpack Cal", "average" : 480, "count" : 5 }
+
+> db.tours.aggregate([{$group: {_id: '$tourPackage', average: {$avg: '$tourPrice'}, count: {$sum: 1}}}, {$out: 'prices'}]) //inserts into new category using out operator
+> db.prices.find()
+{ "_id" : "Backpack Cal", "average" : 480, "count" : 5 }
+{ "_id" : "Cycle California", "average" : 3233.3333333333335, "count" : 3 }
+{ "_id" : "California Hot springs", "average" : 916.6666666666666, "count" : 3 }
+{ "_id" : "Kids California", "average" : 716.6666666666666, "count" : 3 }
+{ "_id" : "Snowboard Cali", "average" : 900, "count" : 3 }
+{ "_id" : "Taste of California", "average" : 418.75, "count" : 4 }
+{ "_id" : "Nature Watch", "average" : 866.6666666666666, "count" : 3 }
+{ "_id" : "California Calm", "average" : 558.3333333333334, "count" : 3 }
+{ "_id" : "From Desert to Sea", "average" : 275, "count" : 2 }
+```
+
+# Replication and Sharding
+Replication
+- Full copies of the dataset
+- Primary and secondary servers
+- Automatic failover
+
+Sharding
+- Partition data onto multiple servers
+- Server farm friendly
+- Scalability and performance
+- Parition database
+- More storage and greater capacity
+- Multiple CPUs and memory
+- Multiple Read/Write operations will be shared across the systems
+
+When to implement sharding
+- Storage limitations
+- Memory constraints
+- Load issues
+- When cost is prohibitive for a single server
+
+Data Storage
+- Monitor the size of /data/db
+- db.collection.stats() and db.stats() give you insight into space being used
+- Best to monitor to avoid unexpected failure
+
+Replication
+- Uptime and failover, handles system failure by moving traffic to other system
+- Replica set vs master-slave
+- Backup from a secondary server
+- Extensive write operations
+- More database reads
+
+How does replication work?
+- Creates a replica set
+- Servers elect a primary 
+- If primary goes down, a new primary is elected.
+- When old primary comes up, it's brought in as a secondary

@@ -1,0 +1,74 @@
+# Everything is built around middlewares
+
+Middleware also supports static styling and images, and can create our own.
+
+- Syntax:
+
+  - app.use(callback);
+  - app.use(path, callback); (middleware will only be executed if url matches specific path)
+  - app.[get | post | put | delete | ...](path, callback);
+
+- Express Middleware can:
+
+  - Execute any code
+  - Change the request and response objects
+  - End the request-response cycle - mostly to send data back to the caller
+  - Call the next middleware in the stack (can pass on the control flow to the next)
+
+- Express Middlewares
+  - Handler Function
+
+```js
+app.use((req, res, next)) => {
+  // Do something
+  return next();
+};
+```
+
+Supports the callback that should be executed on each request, takes a request
+and response argument and also a next argument.
+Request and response are rich objects, response gives us methods to finalize the request and send
+data back to the server. Middleware can do anything that needs to be done like manipulate response object. Then calls next to pass on the control flow, if next is not called it **will** hang.
+
+- Express Routing Middlewares
+
+```js
+app.get("/feedback", (req, res, next) => {
+  // Do something
+  return res.send("Hello");
+});
+```
+
+Route is middleware that contains specific http verb (like _get_ above, others like put, post, etc.)
+
+Path is next part that it should match against
+
+Next is the same handler function that gets request, response, and next.
+
+Routing middlewares usually end the request and usually not call next in the end but will terminate the request and send something back to the browser using something like response.sendFile("") or response.render("myTemplate"); etc.
+
+- Parameter Routes
+
+  - app.get(,/speakers/:speakername', handler);
+    - http://localhost:3000/users/melissa
+    - http://localhost:3000/users/frank
+  - app.get()
+
+- Express Request Lifecycle (MW = Middleware, R = Routes)
+
+App Init
+Request - (GET /speakers) -> app.use() (MW) app.get(,/,)
+| next()
+v
+app.use() (MW) app.get(,/speakers') -> res.send() (Response)
+| next()
+v
+app.use() (MW) app.post(,/feedback')
+
+then last app.use() calls next() and routes to the correct GET call based on the url
+
+To persist user from request to request, we need sessions.
+In this using cookie sessions, store data we want to use for the user encrypted on the client, don't want user to be able to see and manipulate what is stored on the session.
+
+app.set("trust proxy 1", 1);
+makes express trust cookies that are passed through a reverse proxy, may fail if not added.

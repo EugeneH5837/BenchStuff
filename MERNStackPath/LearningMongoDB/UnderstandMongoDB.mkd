@@ -1,0 +1,134 @@
+# Relational Databases
+
+- Gold Standard for decards
+- All companies and roganizations
+- Use common query language - SQL
+- Table organization for discrete data
+- keys used to tie together and construct data
+
+# Schema Design
+
+- Table design is complex
+- Required trained DBA
+- Updates require wholesale operations
+- Complex quereies to join related data
+
+| Relation Databases                   | NoSql Database                                    |
+| :----------------------------------- | :------------------------------------------------ |
+| Powerful, flexible, constrained.     | Document model more closely matches code objects. |
+| Designed for database administrators | Designed for developers                           |
+
+# Designed for Developers
+
+- JSON representation
+- JS Shell commands
+- Excellent drivers
+- Used by companies with extensive data needs
+
+# MongoDB Document Structure
+
+- Documents = JSON object
+- Store data as BSON (Binary JSON)
+- Easy to access related information
+- Flexible indexing capability
+- Easy to adapt to common coding practices
+
+Example Document:
+
+```json
+{
+  "_id": ObjectId("lk34jrtl2341klt3"), //unique field, any identfiying string that is generated
+  "first_name": "John",
+  "last_name": "Smith",
+  "address": "123 Mayberry Place",
+  "phone": "555-555-5555"
+}
+```
+
+# Queries
+
+Documents specify parameters, queries match against the documents
+Ex:
+db.users.find({first_name:"John"})
+db.users.remove({first_name:"John"})
+
+# Updates
+
+Replaces entire object
+set specific values
+
+db.users.update
+
+# Embedding
+
+- Nested arrys and objects
+- Supports operations at any depth
+
+| Embedded Data               | Include by Reference                    |
+| :-------------------------- | :-------------------------------------- |
+| Easier to work with         | More operations for inserting and acess |
+| Minimizes coding operations | Aggregating data can be complex         |
+| Easier to query and index   | Enabled consistent data                 |
+
+Use Case Example
+Wiki Page thing
+
+Document Fields
+- Pages
+- Authors
+- Tags
+- Comments
+
+Embedded
+```json
+{
+  "Type": "blog",
+  "Title": "My blog post",
+  "Author": "Kirsten Hunter",
+  "Tags": ["great", "awesome"],
+  "Comments": ["I love this post!"]
+}
+```
+
+Functions
+dbpages.find({"author":"Kirsten Hunter"})
+insert, etc.
+
+More data 
+{
+  "Type": "blog",
+  "Title": "My blog post",
+  "Author": "Kirsten Hunter",
+  "Tags": ["great", "awesome"],
+  "twitter":"@synedra"
+}
+  "Comments": [{
+    "user": "Fred flintstone"
+    "content": "I love this post!"}]
+}
+
+# Indexing
+- Inddxing provides performance improvemnets
+- Ad hoc queries are expensive
+- Large datasets can lose performance
+- Indices are even useful for very simple data
+
+Indexing features 
+- 64 indices per follection
+- Single field
+- Compound
+- Unique
+
+Sharding
+- Partitions data onto different machines
+- Provides scalability via software
+- Autosharding supported by Mongo
+- Challeging to set up
+
+Replication
+- Reliability
+- Maximizes uptime
+- Replica sets
+- Automatic failover
+
+Can create up to 64 indexes in mongo

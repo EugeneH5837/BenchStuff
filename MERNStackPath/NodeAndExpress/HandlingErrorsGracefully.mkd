@@ -1,0 +1,4 @@
+Handling an error when it is invoked asynchronously, you typically want to return next(new Error) instead of throwing it, this will allow for the error to be displayed on the webpage
+
+Standard error handling with try-catch block in server.js
+but in the catch, return next(err);
